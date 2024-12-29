@@ -9,7 +9,7 @@
 
 ## Integration with ModelArts Inference
 For invoking ModelArts APIs in Python, refer to `APIGW-python-sdk-2.0.5/main.py`.  
-The `get_pixel_point()` function in the `RobotController` class in `test_planning_real.py` demonstrates the implementation.
+Implement the `get_pixel_point()` function in the `RobotController` class in `test_planning_real.py`.
 
 ## Project Entry Point
 The `test_planning_real.py` script contains functions for both simulation and real-world testing.
