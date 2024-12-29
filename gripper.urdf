@@ -1,0 +1,178 @@
+<?xml version="1.0" ?>
+<robot name="3dof_robot_arm">
+  <!-- Base Link -->
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1.0" />
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
+    </inertial>
+    <visual>
+      <geometry>
+        <box size="0.3 0.3 0.1" />
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+  </link>
+
+  <!-- Joint 1 -->
+  <joint name="joint1" type="revolute">
+    <parent link="base_link" />
+    <child link="link1" />
+    <origin xyz="0 0 0.05" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14" upper="3.14" effort="100" velocity="1.57" />
+  </joint>
+
+  <!-- Link 1 -->
+  <link name="link1">
+    <inertial>
+      <origin xyz="0 0 0.2" rpy="0 0 0" />
+      <mass value="0.8" />
+      <inertia ixx="0.005" ixy="0.0" ixz="0.0" iyy="0.005" iyz="0.0" izz="0.005" />
+    </inertial>
+    <visual>
+      <geometry>
+        <cylinder radius="0.05" length="0.4" />
+      </geometry>
+      <origin xyz="0 0 0.2" rpy="0 0 0" />
+      <material name="blue">
+        <color rgba="0 0 1 1" />
+      </material>
+    </visual>
+  </link>
+
+  <!-- Joint 2 -->
+  <joint name="joint2" type="revolute">
+    <parent link="link1" />
+    <child link="link2" />
+    <origin xyz="0 0 0.4" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-3.14" upper="3.14" effort="100" velocity="1.57" />
+  </joint>
+
+  <!-- Link 2 -->
+  <link name="link2">
+    <inertial>
+      <origin xyz="0 0 0.15" rpy="0 0 0" />
+      <mass value="0.6" />
+      <inertia ixx="0.004" ixy="0.0" ixz="0.0" iyy="0.004" iyz="0.0" izz="0.004" />
+    </inertial>
+    <visual>
+      <geometry>
+        <cylinder radius="0.04" length="0.3" />
+      </geometry>
+      <origin xyz="0 0 0.15" rpy="0 0 0" />
+      <material name="green">
+        <color rgba="0 1 0 1" />
+      </material>
+    </visual>
+  </link>
+
+  <!-- Joint 3 -->
+  <joint name="joint3" type="revolute">
+    <parent link="link2" />
+    <child link="link3" />
+    <origin xyz="0 0 0.3" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-3.14" upper="3.14" effort="100" velocity="1.57" />
+  </joint>
+
+  <!-- Link 3 -->
+  <link name="link3">
+    <inertial>
+      <origin xyz="0 0 0.1" rpy="0 0 0" />
+      <mass value="0.4" />
+      <inertia ixx="0.002" ixy="0.0" ixz="0.0" iyy="0.002" iyz="0.0" izz="0.002" />
+    </inertial>
+    <visual>
+      <geometry>
+        <cylinder radius="0.03" length="0.2" />
+      </geometry>
+      <origin xyz="0 0 0.1" rpy="0 0 0" />
+      <material name="red">
+        <color rgba="1 0 0 1" />
+      </material>
+    </visual>
+  </link>
+
+  <!-- End Effector Joint -->
+  <joint name="gripper_joint" type="fixed">
+    <parent link="link3" />
+    <child link="gripper_base" />
+    <origin xyz="0 0 0.2" rpy="3.14 0 0" />
+  </joint>
+
+  <!-- Gripper Base -->
+  <link name="gripper_base">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.2" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+    </inertial>
+    <visual>
+      <geometry>
+        <box size="0.1 0.1 0.02" />
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+  </link>
+
+  <!-- Gripper Finger Left -->
+  <joint name="gripper_left_joint" type="prismatic">
+    <parent link="gripper_base" />
+    <child link="gripper_left" />
+    <origin xyz="0.05 0 0" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="0" upper="0.02" effort="5" velocity="0.1" />
+  </joint>
+
+  <link name="gripper_left">
+    <inertial>
+      <origin xyz="0 0 -0.05" rpy="0 0 0" />
+      <mass value="0.1" />
+      <inertia ixx="0.0005" ixy="0.0" ixz="0.0" iyy="0.0005" iyz="0.0" izz="0.0005" />
+    </inertial>
+    <visual>
+      <geometry>
+        <box size="0.02 0.02 0.1" />
+      </geometry>
+      <origin xyz="0 0 -0.05" rpy="0 0 0" />
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+  </link>
+
+  <!-- Gripper Finger Right -->
+  <joint name="gripper_right_joint" type="prismatic">
+    <parent link="gripper_base" />
+    <child link="gripper_right" />
+    <origin xyz="-0.05 0 0" rpy="0 0 0" />
+    <axis xyz="-1 0 0" />
+    <limit lower="0" upper="0.02" effort="5" velocity="0.1" />
+  </joint>
+
+  <link name="gripper_right">
+    <inertial>
+      <origin xyz="0 0 -0.05" rpy="0 0 0" />
+      <mass value="0.1" />
+      <inertia ixx="0.0005" ixy="0.0" ixz="0.0" iyy="0.0005" iyz="0.0" izz="0.0005" />
+    </inertial>
+    <visual>
+      <geometry>
+        <box size="0.02 0.02 0.1" />
+      </geometry>
+      <origin xyz="0 0 -0.05" rpy="0 0 0" />
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+  </link>
+</robot>

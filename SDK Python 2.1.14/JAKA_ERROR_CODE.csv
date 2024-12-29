@@ -1,0 +1,891 @@
+#define,Robot is powered off,0x0F0001,1,Robot is powered off,机器人本体未上电,Robot is powered off,1,ロボット本体の電源が入っていません
+#define,Robot is disabled,0x0F0002,1,Robot is disabled,机器人未使能,Robot is disabled,1,ロボットが有効になっていません
+#define,The operation cannot be performed in the mode,0x0F0003,2,"This operation cannot be performed in the current mode Currently in {0} mode, {1} commands are not allowed",当前模式下无法进行此操作,"This operation cannot be performed in the current mode Currently in {0} mode, {1} commands are not allowed",1,この操作は現在のモードでは実行できません
+#define,Inverse Kinematic calculation failed,0x0F0004,1,Inverse Kinematic calculation failed,运动学逆解计算失败,Inverse Kinematic calculation failed,1,運動学の逆計算に失敗しました
+#define,The settings value is too large,0x0F0005,1,The settings value is too large,位置设置过大,The settings value is too large,1,位置の設定が大きすぎます
+#define,The robot joint reaches the positive hard limit,0x0F0006,1,The robot joint reaches the positive hard limit and cannot move,机器人关节达到正的硬限位,The robot joint reaches the positive hard limit and cannot move,1,ロボット ジョイントが正のハード リミットに達する
+#define,The robot joint reaches the negative hard limit,0x0F0007,1,The robot joint reaches the negative hard limit and cannot move,机器人关节达到负的硬限位,The robot joint reaches the negative hard limit and cannot move,1,ロボット ジョイントが負のハード リミットに達する
+#define,The robot joint reaches the positive soft limit,0x0F0008,1,The robot joint reaches the positive soft limit and cannot move,机器人关节达到正的软限位,The robot joint reaches the positive soft limit and cannot move,1,ロボット ジョイントが正のソフト リミットに達する
+#define,The robot joint reaches the negative soft limit,0x0F0009,1,The robot joint reaches the negative soft limit and cannot move,机器人关节达到负的软限位,The robot joint reaches the negative soft limit and cannot move,1,ロボット ジョイントが負のソフト リミットに達する
+#define,Cartesian target position exceeds positive maximum position limit,0x0F000A,1,Cartesian target position exceeds positive maximum position limit,笛卡尔目标位置超过正的最大位置限制,Cartesian target position exceeds positive maximum position limit,1,デカルト ターゲット位置が正の最大位置制限を超えています
+#define,Cartesian target position exceeds negative maximum position limit,0x0F000B,1,Cartesian target position exceeds negative maximum position limit,笛卡尔目标位置超过负的最大位置限制,Cartesian target position exceeds negative maximum position limit,1,デカルト ターゲット位置が負の最大位置制限を超えています
+#define,Manual operation is not possible during joint return to zero. ,0x0F000E,1,No manual operation during Home,关节回零过程中无法进行手动操作,No manual operation during Home,1,ジョイント原点復帰中は手動操作不可
+#define,Cannot find the joint mentioned in the command,0x0F000F,1,Cannot find the joint mentioned in the command,指令关节索引无效,Cannot find the joint mentioned in the command,1,コマンド ジョイント インデックスが無効です
+#define,Invalid speed of the move command,0x0F0010,1,Invalid speed of the move command,运动指令速度无效,Invalid speed of the move command,1,無効なモーション コマンド速度
+#define,Move command target position exceeds the limit,0x0F0011,1,Move command target position exceeds the limit, 运动指令目标位置超过机器限制,Move command target position exceeds the limit,1,モーション命令の目標位置が機械限界を超えています
+#define,Cannot perform HOME within MoveJ,0x0F0012,1,Cannot perform HOME within MoveJ,非关节模式不能进行home操作,Cannot perform HOME within MoveJ,1,ノンジョイントモードは原点復帰不可
+#define,Homing...,0x0F0013,1,Homing...,home正在进行,Homing...,1,ホーム進行中
+#define,Failed to exit protective mode,0x0F0014,1,Failed to exit protective mode,退出保护模式失败,Failed to exit protective mode,1,保護モードを終了できませんでした
+#define,Robot is powered off,0x0F0015,1,Robot is powered off,机器人未启动,Robot is powered off,1,ロボットが起動しない
+#define,The robot joint reaches soft limit,0x0F0016,1,The robot joint reaches soft limit,机器人关节处于软限位,The robot joint reaches soft limit,1,ロボット関節がソフトリミットにある
+#define,The target position of the move command is unreachable,0x0F0017,1,The target position of the move command is unreachable,运动指令目标位置不可达,The target position of the move command is unreachable,1,モーション命令の目標位置に到達できません
+#define,Reach the singularity and perform protective stop,0x0F0018,1,Reach the singularity and perform protective stop,到达奇异点保护性停止,Reach the singularity and perform protective stop,1,特異点が保護停止に達した
+#define,CAN device initialization failed,0x0F0019,1,CAN device initialization failed,CAN设备初始化失败,CAN device initialization failed,1,CAN デバイスの初期化に失敗しました
+#define,One-click upgrade timeout,0x0F001A,1,One-click upgrade timeout,一键升级超时,One-click upgrade timeout,1,ワンクリック アップグレードのタイムアウト
+#define,One-click upgrade exception,0x0F001B,1,One-click upgrade exception,一键升级异常,One-click upgrade exception,1,ワンクリック アップグレードの例外
+#define,Failed to move to target position by MoveL,0x0F0020,1,Failed to move to target position by MoveL,直线运动到目标位置失败,Failed to move to target position by MoveL,1,目標位置への直線移動に失敗しました
+#define,Unsupported robot model,0x0F0021,1,Unsupported robot model,机器人型号不支持,Unsupported robot model,1,ロボットモデルはサポートしていません
+#define,Invalid robot ID,0x0F0022,1,Invalid robot ID,机器人序列号无效,Invalid robot ID,1,ロボットのシリアル番号が無効です
+#define,Invalid payload identification trajectory,0x0F0023,1,Invalid payload identification trajectory,负载辨识轨迹索引无效,Invalid payload identification trajectory,1, update controller
+#define,The magnification cannot be set in the reduction mode,0x0F0024,2,The magnification cannot be set in the reduction mode,倍率模式下无法设置倍率,The magnification cannot be set in the reduction mode,1,倍率モードでは倍率を設定できません
+#define,The definition of payload identification trajectory does not meet standard,0x0F0025,1,The definition of payload identification trajectory does not meet standard,负载辨识轨迹定义不满足规范,The definition of payload identification trajectory does not meet standard,1,荷重識別軌跡の定義が仕様を満たしていません
+#define,Please disable before power off,0x0F0026,2,Please disable before power off,关闭电源之前请下使能,Please disable before power off,1,電源を切る前に有効にしてください
+#define,Cannot disable the robot during program running,0x0F0027,2,Cannot disable the robot during program running,程序运行期间不能下使能,Cannot disable the robot during program running,1,プログラムの実行中は有効にできません
+#define,Payload settings deviation,0x0F0028,1,Payload settings deviation. Please check it.,负载设置存在偏差,Payload settings deviation. Please check it.,1,負荷設定に偏りがある
+#define,MoveC command added failure,0x0F0029,1,MoveC command added failure,添加圆弧运动指令失败,MoveC command added failure,1,円運動コマンドの追加に失敗しました
+#define,Joint speed limit is set to 0,0x0F0030,1,Joint speed limit is set to 0,关节速度限制被设置为0,Joint speed limit is set to 0,1,ジョイント速度制限は 0 に設定されています
+#define,3-Position enable limit,0x0F0031,2,3-Position enable limit,三位置使能限制,3-Position enable limit,1,ポジション イネーブル リミット
+#define,Unable to track motion types except MoveL and MoveC,0x0F0032,1,Unable to track motion types except MoveL and MoveC,无法对直线或圆弧运动外的运动类型进行跟踪,Unable to track motion types except MoveL and MoveC,1,直線または円弧モーション以外のモーション タイプは追跡できません
+#define,MoveJ command added failure,0x0F0038,1,MoveJ command added failure,添加关节运动指令失败,MoveJ command added failure,1,関節動作命令の追加に失敗しました
+#define,1,0x0F0039,1,TCP calibration teaching point repeat,TCP标定示教点重复,TCP calibration teaching point repeat,1,Please re-calibrate TCP and make sure there are no same points.
+#define,The robot is not allowed to disable during movement,0x0F003A,2,The robot is not allowed to disable during movement,机器人运动过程中不允许下使能,The robot is not allowed to disable during movement,1,ロボットの運動中にイネーブルメントをオフにすることはできません
+#define,"The robot is powered on, no need to re-power on",0x0F003B,1,"The robot is powered on, no need to re-power on",机器人已上电，无需重复上电,"The robot is powered on, no need to re-power on",0,ロボットは電源を入れました繰り返して電源を入れる必要はありません
+#define,"The robot is enabled, no need to re-enable",0x0F003C,1,"The robot is enabled, no need to re-enable",机器人已使能，无需重复使能,"The robot is enabled, no need to re-enable",0,ロボットが繰り返しなくてもできるようになりました
+#define,The TCP coordinate system is calibrated when the teach-in points are on the same line,0x0F003D,1,The TCP coordinate system is calibrated when the teach-in points are on the same line,TCP坐标系的标定有示教点在同一条直线上的情况,The TCP coordinate system is calibrated when the teach-in points are on the same line,1,TCP座標系は、ティーチインポイントが同じ線上にあるときにキャリブレーションされます
+#define,The calibration error of the TCP coordinate system exceeds a preset threshold,0x0F003E,1,The calibration error of the TCP coordinate system exceeds a preset threshold,TCP坐标系的标定误差超过预设阈值,The calibration error of the TCP coordinate system exceeds a preset threshold,1,TCP座標系のキャリブレーション誤差が事前設定されたしきい値を超えています
+#define,The calibration coordinates of the TCP coordinate system are beyond the working space,0x0F003F,1,The calibration coordinates of the TCP coordinate system are beyond the working space,TCP坐标系的标定坐标超出了工作空间,The calibration coordinates of the TCP coordinate system are beyond the working space,1,TCP座標系のキャリブレーション座標が作業スペースを超えています
+#define,The speed of joint 1 exceeds the limit,0x000030,2,The speed of joint 1 exceeds the limit,关节一运动速度超过限制,The speed of joint 1 exceeds the limit,1,ジョイント 1 の移動速度が限界を超えています
+#define,The speed of joint 2 exceeds the limit,0x010030,2,The speed of joint 2 exceeds the limit,关节二运动速度超过限制,The speed of joint 2 exceeds the limit,1,ジョイント 2 の移動速度が限界を超えています
+#define,The speed of joint 3 exceeds the limit,0x020030,2,The speed of joint 3 exceeds the limit,关节三运动速度超过限制,The speed of joint 3 exceeds the limit,1,ジョイント 3 の移動速度が限界を超えています
+#define,The speed of joint 4 exceeds the limit,0x030030,2,The speed of joint 4 exceeds the limit,关节四运动速度超过限制,The speed of joint 4 exceeds the limit,1,ジョイント 4 の移動速度が限界を超えています
+#define,The speed of joint 5 exceeds the limit,0x040030,2,The speed of joint 5 exceeds the limit,关节五运动速度超过限制,The speed of joint 5 exceeds the limit,1,ジョイントファイブの移動速度が限界を超えている
+#define,The speed of joint 6 exceeds the limit,0x050030,2,The speed of joint 6 exceeds the limit,关节六运动速度超过限制,The speed of joint 6 exceeds the limit,1,ジョイント 6 の移動速度が限界を超えています
+#define,Joint 1 reaches the positive soft limit,0x000031,1,Joint 1 reaches the positive soft limit,关节一到达正软限位,Joint 1 reaches the positive soft limit,1,ジョイントが正のソフト リミットに達するとすぐに
+#define,Joint 2 reaches the positive soft limit,0x010031,1,Joint 2 reaches the positive soft limit,关节二到达正软限位,Joint 2 reaches the positive soft limit,1,ジョイント 2 が正のソフト リミットに到達
+#define,Joint 3 reaches the positive soft limit,0x020031,1,Joint 3 reaches the positive soft limit,关节三到达正软限位,Joint 3 reaches the positive soft limit,1,ジョイント 3 が正のソフト リミットに到達
+#define,Joint 4 reaches the positive soft limit,0x030031,1,Joint 4 reaches the positive soft limit,关节四到达正软限位,Joint 4 reaches the positive soft limit,1,ジョイント 4 が正のソフト リミットに到達
+#define,Joint 5 reaches the positive soft limit,0x040031,1,Joint 5 reaches the positive soft limit,关节五到达正软限位,Joint 5 reaches the positive soft limit,1,ジョイント 5 が正のソフト リミットに到達
+#define,Joint 6 reaches the positive soft limit,0x050031,1,Joint 6 reaches the positive soft limit,关节六到达正软限位,Joint 6 reaches the positive soft limit,1,ジョイント 6 が正のソフト リミットに到達
+#define,Joint 1 reaches the negative soft limit,0x000032,1,Joint 1 reaches the negative soft limit,关节一到达负软限位,Joint 1 reaches the negative soft limit,1,ジョイントが負のソフト リミットに達するとすぐに
+#define,Joint 2 reaches the negative soft limit,0x010032,1,Joint 2 reaches the negative soft limit,关节二到达负软限位,Joint 2 reaches the negative soft limit,1,ジョイント 2 が負のソフト リミットに到達
+#define,Joint 3 reaches the negative soft limit,0x020032,1,Joint 3 reaches the negative soft limit,关节三到达负软限位,Joint 3 reaches the negative soft limit,1,ジョイント 3 が負のソフト リミットに到達
+#define,Joint 4 reaches the negative soft limit,0x030032,1,Joint 4 reaches the negative soft limit,关节四到达负软限位,Joint 4 reaches the negative soft limit,1,ジョイント 4 が負のソフト リミットに到達
+#define,Joint 5 reaches the negative soft limit,0x040032,1,Joint 5 reaches the negative soft limit,关节五到达负软限位,Joint 5 reaches the negative soft limit,1,ジョイント 5 が負のソフト リミットに到達
+#define,Joint 6 reaches the negative soft limit,0x050032,1,Joint 6 reaches the negative soft limit,关节六到达负软限位,Joint 6 reaches the negative soft limit,1,ジョイント 6 が負のソフト リミットに到達
+#define,Joint 1 is about to hit the positive soft limit,0x000033,1,Joint 1 is about to hit the positive soft limit,关节一即将到达正软限位,Joint 1 is about to hit the positive soft limit,1,ジョイント 1 が正の位置制限に達しようとしています
+#define,Joint 2 is about to hit the positive soft limit,0x010033,1,Joint 2 is about to hit the positive soft limit,关节二即将到达正软限位,Joint 2 is about to hit the positive soft limit,1,ジョイント 2 が正の位置制限に達しようとしています
+#define,Joint 3 is about to hit the positive soft limit,0x020033,1,Joint 3 is about to hit the positive soft limit,关节三即将到达正软限位,Joint 3 is about to hit the positive soft limit,1,ジョイント 3 が正の位置制限に達しようとしています
+#define,Joint 4 is about to hit the positive soft limit,0x030033,1,Joint 4 is about to hit the positive soft limit,关节四即将到达正软限位,Joint 4 is about to hit the positive soft limit,1,ジョイント 4 が正の位置制限に達しようとしています
+#define,Joint 5 is about to hit the positive soft limit,0x040033,1,Joint 5 is about to hit the positive soft limit,关节五即将到达正软限位,Joint 5 is about to hit the positive soft limit,1,ジョイント 5 が正の位置制限に達しようとしています
+#define,Joint 6 is about to hit the positive soft limit,0x050033,1,Joint 6 is about to hit the positive soft limit,关节六即将到达正软限位,Joint 6 is about to hit the positive soft limit,1,ジョイント 6 が正の位置制限に達しようとしています
+#define,Joint 1 is about to hit the negative soft limit,0x000034,1,Joint 1 is about to hit the negative soft limit,关节一即将到达负软限位,Joint 1 is about to hit the negative soft limit,1,ジョイント 1 が負の位置制限に達しようとしています
+#define,Joint 2 is about to hit the negative soft limit,0x010034,1,Joint 2 is about to hit the negative soft limit,关节二即将到达负软限位,Joint 2 is about to hit the negative soft limit,1,ジョイント 2 が負の位置制限に達しようとしています
+#define,Joint 3 is about to hit the negative soft limit,0x020034,1,Joint 3 is about to hit the negative soft limit,关节三即将到达负软限位,Joint 3 is about to hit the negative soft limit,1,ジョイント 3 が負の位置制限に達しようとしています
+#define,Joint 4 is about to hit the negative soft limit,0x030034,1,Joint 4 is about to hit the negative soft limit,关节四即将到达负软限位,Joint 4 is about to hit the negative soft limit,1,ジョイント 4 が負の位置制限に達しようとしています
+#define,Joint 5 is about to hit the negative soft limit,0x040034,1,Joint 5 is about to hit the negative soft limit,关节五即将到达负软限位,Joint 5 is about to hit the negative soft limit,1,ジョイント 5 が負の位置制限に達しようとしています
+#define,Joint 6 is about to hit the negative soft limit,0x050034,1,Joint 6 is about to hit the negative soft limit,关节六即将到达负软限位,Joint 6 is about to hit the negative soft limit,1,ジョイント 6 が負の位置制限に達しようとしています
+#define,Reach the singularity,0x0F0033,1,Reach the singularity,到达奇异点,Reach the singularity,1,特異点が保護停止に達した
+#define,Collision detected,0x0F0034,1,Collision detected,检测到碰撞,Collision detected,1,衝突検出保護停止
+#define,Orientation limit exceeded,0x0F0035,1,Orientation limit exceeded,超过姿态限制,Orientation limit exceeded,1,姿勢限界を超えた保護停止
+#define,End of tool exceeds the limit of maximum position deviation,0x0F0036,1,End of tool exceeds the limit of maximum position deviation,工具末端超过最大位置偏差限制,End of tool exceeds the limit of maximum position deviation,1,Please check whether the robot movement deviates from the command position
+#define,Linear velocity of tool end exceeds the limit of maximum velocity,0x0F0037,1,Linear velocity of tool end exceeds the limit of maximum velocity,工具末端线速度超过最大速度限制,Linear velocity of tool end exceeds the limit of maximum velocity,1,ツールエンドライン速度が最高速度制限を超えています
+#define,JOG target position exceeds positive soft limit of joint 1,0x000035,1,JOG target position exceeds positive soft limit of joint 1,JOG目标位置超过关节一正软限位,JOG target position exceeds positive soft limit of joint 1,1,JOG 目標位置がジョイント 1 の正のソフト リミットを超えています
+#define,JOG target position exceeds positive soft limit of joint 2,0x010035,1,JOG target position exceeds positive soft limit of joint 2,JOG目标位置超过关节二正软限位,JOG target position exceeds positive soft limit of joint 2,1,JOG 目標位置がジョイント 2 の正のソフト リミットを超えています
+#define,JOG target position exceeds positive soft limit of joint 3,0x020035,1,JOG target position exceeds positive soft limit of joint 3,JOG目标位置超过关节三正软限位,JOG target position exceeds positive soft limit of joint 3,1,JOG 目標位置がジョイントの 3 つの正のソフト リミットを超えています
+#define,JOG target position exceeds positive soft limit of joint 4,0x030035,1,JOG target position exceeds positive soft limit of joint 4,JOG目标位置超过关节四正软限位,JOG target position exceeds positive soft limit of joint 4,1,JOG 目標位置がジョイント 4 の正のソフト リミットを超えています
+#define,JOG target position exceeds positive soft limit of joint 5,0x040035,1,JOG target position exceeds positive soft limit of joint 5,JOG目标位置超过关节五正软限位,JOG target position exceeds positive soft limit of joint 5,1,JOG 目標位置がジョイントの 5 つの正のソフト リミットを超えています
+#define,JOG target position exceeds positive soft limit of joint 6,0x050035,1,JOG target position exceeds positive soft limit of joint 6,JOG目标位置超过关节六正软限位,JOG target position exceeds positive soft limit of joint 6,1,JOG 目標位置が関節 6 プラス ソフト リミットを超えています
+#define,JOG target position exceeds negative soft limit of joint 1,0x000036,1,JOG target position exceeds negative soft limit of joint 1,JOG目标位置超过关节一负软限位,JOG target position exceeds negative soft limit of joint 1,1,JOG 目標位置がジョイント 1 の負のソフト リミットを超えています
+#define,JOG target position exceeds negative soft limit of joint 2,0x010036,1,JOG target position exceeds negative soft limit of joint 2,JOG目标位置超过关节二负软限位,JOG target position exceeds negative soft limit of joint 2,1,JOG 目標位置がジョイント 2 の負のソフト リミットを超えています
+#define,JOG target position exceeds negative soft limit of joint 3,0x020036,1,JOG target position exceeds negative soft limit of joint 3,JOG目标位置超过关节三负软限位,JOG target position exceeds negative soft limit of joint 3,1,JOG 目標位置がジョイント 3 の負のソフト リミットを超えています
+#define,JOG target position exceeds negative soft limit of joint 4,0x030036,1,JOG target position exceeds negative soft limit of joint 4,JOG目标位置超过关节四负软限位,JOG target position exceeds negative soft limit of joint 4,1,JOG 目標位置がジョイント 4 の負のソフト リミットを超えています
+#define,JOG target position exceeds negative soft limit of joint 5,0x040036,1,JOG target position exceeds negative soft limit of joint 5,JOG目标位置超过关节五负软限位,JOG target position exceeds negative soft limit of joint 5,1,JOG 目標位置がジョイント 5 の負のソフト リミットを超えています
+#define,JOG target position exceeds negative soft limit of joint 6,0x050036,1,JOG target position exceeds negative soft limit of joint 6,JOG目标位置超过关节六负软限位,JOG target position exceeds negative soft limit of joint 6,1,JOG 目標位置がジョイント 6 の負のソフト リミットを超えています
+#define,Excessive acceleration of joint 1,0x000037,1,Excessive acceleration of joint 1,关节一加速度过大,Excessive acceleration of joint 1,1,関節一加速度が大きすぎる
+#define,Excessive acceleration of joint 2,0x010037,1,Excessive acceleration of joint 2,关节二加速度过大,Excessive acceleration of joint 2,1,関節二加速度が大きすぎる
+#define,Excessive acceleration of joint 3,0x020037,1,Excessive acceleration of joint 3,关节三加速度过大,Excessive acceleration of joint 3,1,関節三加速度が大きすぎる
+#define,Excessive acceleration of joint 4,0x030037,1,Excessive acceleration of joint 4,关节四加速度过大,Excessive acceleration of joint 4,1,関節四加速度が大きすぎる
+#define,Excessive acceleration of joint 5,0x040037,1,Excessive acceleration of joint 5,关节五加速度过大,Excessive acceleration of joint 5,1,関節五加速度が大きすぎる
+#define,Excessive acceleration of joint 5,0x050037,1,Excessive acceleration of joint 5,关节六加速度过大,Excessive acceleration of joint 5,1,関節六加速度が大きすぎる
+#define, Unable to enter drag mode in sim mode,0x0F0049,1, Unable to enter drag mode in sim mode,仿真模式下无法进入拖拽模式, Unable to enter drag mode in sim mode,1,エミュレーションモードでドラッグモードに入ることはできません
+#define,Cannot enter drag-and-drop mode when the robot reaches soft limit,0x0F0040,1,Cannot enter drag-and-drop mode when the robot reaches soft limit,在软限位上无法进入拖拽模式,Cannot enter drag-and-drop mode when the robot reaches soft limit,1,ソフト リミットでドラッグ モードに入ることができません
+#define,Drag exceeds the soft limit and exit the drag-and-drop mode,0x0F0041,1,Drag exceeds the soft limit and exit the drag-and-drop mode,拖拽超出软限位 将退出拖拽,Drag exceeds the soft limit and exit the drag-and-drop mode,1,ソフト リミットを超えてドラッグすると、ドラッグが終了します
+#define,Force control parameter setting failed,0x0F0042,1,Flexible parameters settings failure,力控参数设置失败,Flexible parameters settings failure,1,力制御パラメータの設定に失敗しました
+#define,Joint 1 will reach the soft limit,0x000042,1,Joint 1 will reach the soft limit,关节一即将达到软限位,Joint 1 will reach the soft limit,1,ジョイント 1 がソフト リミットに到達しようとしています
+#define,Joint 2 will reach the soft limit,0x010042,1,Joint 2 will reach the soft limit,关节二即将达到软限位,Joint 2 will reach the soft limit,1,ジョイント 2 がソフト リミットに到達しようとしています
+#define,Joint 3 will reach the soft limit,0x020042,1,Joint 3 will reach the soft limit,关节三即将达到软限位,Joint 3 will reach the soft limit,1,ジョイント 3 がソフト リミットに到達しようとしています
+#define,Joint 4 will reach the soft limit,0x030042,1,Joint 4 will reach the soft limit,关节四即将达到软限位,Joint 4 will reach the soft limit,1,ジョイント 4 がソフト リミットに到達しようとしています
+#define,Joint 4 will reach the soft limit,0x040042,1,Joint 4 will reach the soft limit,关节五即将达到软限位,Joint 4 will reach the soft limit,1,ジョイント 5 がソフト リミットに到達しようとしています
+#define,Joint 6 will reach the soft limit,0x050042,1,Joint 6 will reach the soft limit,关节六即将达到软限位,Joint 6 will reach the soft limit,1,ジョイント 6 がソフト リミットに到達しようとしています
+#define,Robot is disabled and cannot drag,0x0F0043,1,Robot is disabled and cannot drag,机器人未使能无法进入拖拽,Robot is disabled and cannot drag,1,ロボットが有効になっておらず、ドラッグに入ることができません
+#define,Robot is moving and cannot drag,0x0F0044,2,Robot is moving and cannot drag,机器人正在运动无法进入拖拽,Robot is moving and cannot drag,1,ロボットが動いていてドラッグに入れない
+#define,The joint torque exceeds the limit and cannot enter the drag-and-drop mode,0x0F0045,1,The joint torque exceeds the limit and cannot enter the drag-and-drop mode,有关节力矩超限无法进入拖拽,The joint torque exceeds the limit and cannot enter the drag-and-drop mode,1,関節トルクが限界を超えると引きずることができない
+#define,The drag-and-drop button is disabled and cannot enter drag-and-drop mode,0x0F0046,2,The drag-and-drop button is disabled and cannot enter drag-and-drop mode,拖拽按钮已屏蔽无法进入拖拽,The drag-and-drop button is disabled and cannot enter drag-and-drop mode,0,ドラッグボタンがブロックされ、ドラッグに入ることができません
+#define,Program pause/resume button disabled,0x0F0047,2,Program pause/resume button disabled,程序暂停/恢复按钮已屏蔽,Program pause/resume button disabled,0,プログラムの一時停止/再開ボタンがブロックされました
+#define,POINT button is disabled and cannot record the points,0x0F0048,2,POINT button is disabled and cannot record the points,point按钮已屏蔽无法记录点位,POINT button is disabled and cannot record the points,0,ポイントボタンがブロックされており、ポイントを記録できません
+#define,Torque sensor not turned on,0x0F0050,1,Torque sensor not turned on. ,力矩传感器未就绪,Torque sensor not turned on. ,1,トルクセンサーの準備ができていません
+#define,The torque sensor mode cannot be switched in force-controlled drag-and-drop mode. ,0x0F0051,2,The torque sensor mode cannot be switched in force-controlled drag-and-drop mode.,力控牵引模式下无法切换力矩传感器模式,The torque sensor mode cannot be switched in force-controlled drag-and-drop mode.,1,力制御トラクションモードではトルクセンサーモードの切り替えはできません
+#define,Torque sensor failure during force-controlled dragging,0x0F0052,1,Torque sensor failure during force-controlled dragging,力控牵引过程中力矩传感器故障,Torque sensor failure during force-controlled dragging,1,力制御牽引中のトルクセンサーの故障
+#define,Unable to perform single-step debugging while the program is running,0x0F0054,2,Unable to perform single-step debugging while the program is running,程序运行期间无法执行单步运行操作,Unable to perform single-step debugging while the program is running,1,プログラムの実行中はシングルステップ操作を実行できません
+#define,Collision sensitivity cannot be set during dragging,0x0F0055,2,Collision sensitivity cannot be set during dragging,拖拽期间不能设置碰撞灵敏度,Collision sensitivity cannot be set during dragging,1,ドラッグ中は衝突感度を設定できません
+#define,Expansion IO module not running,0x0F0056,1,Expansion IO module not running and unable to access.,扩展IO模块未运行,Expansion IO module not running and unable to access.,1,拡張 IO モジュールが実行されていません
+#define,Unable to set dynamics feedforward,0x0F0057,2,The robot cannot enable or turn off dynamics feedforward when moving. ,无法设置动力学前馈,The robot cannot enable or turn off dynamics feedforward when moving. ,1,ダイナミクス フィードフォワードを設定できません
+#define,No feature license detected,0x0F0058,1,No feature license detected,未检测到功能使用许可,No feature license detected,1,機能ライセンスが検出されない
+#define,Protective stop reset failed,0x0F0059,2,Protective stop reset failed,保护性停止复位失败,Protective stop reset failed,1,プロテクトストップリセット失敗
+#define,The magnification cannot be set in the protective stop mode,0x0F0060,2,The magnification cannot be set in the protective stop mode,保护性停止模式下无法设置倍率,The magnification cannot be set in the protective stop mode,1,オーバーライドは保護停止モードでは設定できません
+#define,User coordinate system calibration failed,0x0F0061,1,User coordinate system calibration failed,用户坐标系标定失败,User coordinate system calibration failed,1,ユーザー座標系の調整に失敗しました
+#define,Joint 1 detects collision and the robot stops move,0x000061,2,Joint 1 detects collision and the robot stops move ,关节一检测到碰撞并停止运动,Joint 1 detects collision and the robot stops move ,1,衝突が検出されるとすぐに保護停止ジョイント
+#define,Joint 2 detects collision and the robot stops move,0x010061,2,Joint 2 detects collision and the robot stops move,关节二检测到碰撞并停止运动,Joint 2 detects collision and the robot stops move,1,保護停止ジョイント 2 つの検出された衝突
+#define,Joint 3 detects collision and the robot stops move,0x020061,2,Joint 3 detects collision and the robot stops move,关节三检测到碰撞并停止运动,Joint 3 detects collision and the robot stops move,1,保護停止ジョイント 3 つの衝突が検出されました
+#define,Joint 4 detects collision and the robot stops move,0x030061,2,Joint 4 detects collision and the robot stops move,关节四检测到碰撞并停止运动,Joint 4 detects collision and the robot stops move,1,保護停止ジョイント 4 個の衝突が検出されました
+#define,Joint 5 detects collision and the robot stops move,0x040061,2,Joint 5 detects collision and the robot stops move,关节五检测到碰撞并停止运动,Joint 5 detects collision and the robot stops move,1,プロテクティブ ストップ ジョイント 5 衝突検出
+#define,Joint 6 detects collision and the robot stops move,0x050061,2,Joint 6 detects collision and the robot stops move,关节六检测到碰撞并停止运动,Joint 6 detects collision and the robot stops move,1,保護停止ジョイント 6 の衝突が検出されました
+#define,TIO RS485 channel torque sensor mode not enabled ,0x0F0062,2,TIO RS485 channel torque sensor mode not enabled,TIO RS485通道力矩传感器模式未启用 ,TIO RS485 channel torque sensor mode not enabled,1,TIO RS485 チャネル トルク センサー モードが有効になっていません
+#define,Supports up to one TIO RS485 channel enabled as torque sensor mode,0x0F0063,2,Supports up to one TIO RS485 channel enabled as torque sensor mode,最多支持一路TIO RS485通道启用为力矩传感器模式,Supports up to one TIO RS485 channel enabled as torque sensor mode,1,トルク センサー モードを有効にするために、最大 1 つの TIO RS485 チャネルをサポートします。
+#define,Communication parameter modification failed,0x0F0064,1,"Modification of communication parameters failed, the torque sensor using this channel is running. ",通讯参数修改失败,"Modification of communication parameters failed, the torque sensor using this channel is running. ",1,通信パラメータの変更に失敗しました
+#define,Invalid semaphore definition,0x0F0065,2,Invalid semaphore definition,信号量定义无效,Invalid semaphore definition,1,セマフォ定義が無効です
+#define,Semaphore exceeds the maximum,0x0F0066,1,Semaphore exceeds the maximum（8）,信号量超过最大支持数量,Semaphore exceeds the maximum（8）,1,セマフォがサポートされている最大数を超えています
+#define,Specified semaphore does not exist,0x0F0067,2,Specified semaphore does not exist,指定信号量不存在,Specified semaphore does not exist,1,指定されたセマフォが存在しません
+#define,Failed to send TIO RS485 command ,0x0F0068,2,Failed to send TIO RS485 command. The command queue is full. ,发送TIO RS485指令失败 ,Failed to send TIO RS485 command. The command queue is full. ,1,TIO RS485 コマンドの送信に失敗しました
+#define,TIO RS485 command reception timeout  ,0x0F0069,1,TIO RS485 command reception timeout,接收TIO RS485指令反馈超时  ,TIO RS485 command reception timeout,1, check the communication between the controller and the robot.  
+#define,Robot DH parameter retrieving exception,0x0F0070,2,Robot DH parameter retrieving exception,机器人DH参数读取校验异常,Robot DH parameter retrieving exception,1,ロボット DH パラメータ読み取り検証例外
+#define,Robot dynamics parameter retrieving exception,0x0F0071,2,Robot dynamics parameter retrieving exception,机器人动力学参数读取校验异常,Robot dynamics parameter retrieving exception,1,ロボットの動的パラメータの読み取りと検証が異常です
+#define,"Servo parameter reading exception | enable failure",0x0F0072,2,Retrieving DH or dynamics parameters from the servo and cannot enable the robot.,伺服参数读取异常，使能失败,Retrieving DH or dynamics parameters from the servo and cannot enable the robot.,1,サーボからパラメータを読み取る
+#define,Reaching the robot momentum limit,0x0F0073,2,Reaching the robot momentum limit,达到机器人动量限制,Reaching the robot momentum limit,1,ロボットの運動量の限界に達しました
+#define,Reaching the robot TCP speed limit  ,0x0F0074,1,Reaching the robot TCP speed limit,达到机器人TCP速度限制  ,Reaching the robot TCP speed limit,1,ロボットの TCP 速度制限に達しました
+#define,About to exceed the safety plane,0x0F0075,2,About to exceed the safety plane,即将超出安全平面,About to exceed the safety plane,1,安全面を超えようとしている
+#define,Invalid servo DH parameter version No. ,0x0F0076,1,Invalid servo DH parameter version No.,伺服端DH参数版本号无效,Invalid servo DH parameter version No.,1,サーバー側の DH パラメータのバージョン番号が無効です
+#define,Invalid servo dynamics parameter version No.,0x0F0077,1,Invalid servo dynamics parameter version No.,伺服端动力学参数版本号无效,Invalid servo dynamics parameter version No.,1,サーバーの動的パラメーターのバージョン番号が無効です
+#define,Too frequent servo enable operation,0x0F0078,1,Too frequent servo enable operation,伺服使能操作过于频繁,Too frequent servo enable operation,1,サーボ有効化操作が頻繁すぎる
+#define,"Unable to switch emulation / real machine mode, please power off ",0x0F0079,2,"Unable to switch emulation / real machine mode, please power off",无法切换仿真/真机模式 请关闭电源,"Unable to switch emulation / real machine mode, please power off",1,エミュレーション/実機モードの切り替えができません。電源を切ってください
+#define,Unable to set the IP of two network ports in the same network segment,0x0F007A,2,Unable to set the IP of two network ports in the same network segment,不支持将两个网口的IP设置在同一网段,Unable to set the IP of two network ports in the same network segment,1,同じネットワーク セグメント内の 2 つのネットワーク ポートの IP を設定することはサポートされていません
+#define,About to exceed the safety orientation limit  ,0x0F007B,2,About to exceed the safety orientation limit  ,即将超出姿态安全限制  ,About to exceed the safety orientation limit  ,1,ポスチャ セキュリティの限界を超えようとしています
+#define,Unable to switch emulation/real machine mode,0x0F007C,2,Unable to switch emulation/real machine mode,无法切换仿真/真机模式 ,Unable to switch emulation/real machine mode,1,エミュレーション/実機モードの切り替えができません
+#define,The robot model cannot be switched when the robot is powered on,0x0F0080,2,The robot model cannot be switched when the robot is powered on,上电状态不允许切换机器人模型,The robot model cannot be switched when the robot is powered on,1,電源オン状態でのロボットモデルの切り替えは許可されていません
+#define,Resetting the password is not allowed during robot movement,0x0F0081,2,Resetting the password is not allowed during robot movement,机器人运动过程中不允许重置密码,Resetting the password is not allowed during robot movement,1,ロボットの移動中はパスワードのリセットはできません
+#define,Please check whether the password reset button works. ,0x0F0082,2,Please check whether the password reset button works.,请检查密码复位按钮是否正常,Please check whether the password reset button works.,1,パスワードリセットボタンが正常か確認してください
+#define,Joint deceleration failed,0x0F0083,1,Joint deceleration failed,关节减速失败,Joint deceleration failed,1,ジョイントの減速に失敗しました
+#define,"Circular conveyor belts P1, P2, P3 three point collinearity",0x0F0084,1,"Circular conveyor belts P1, P2, P3 three point collinearity",圆形传送带P1、P2、P3 三点共线,"Circular conveyor belts P1, P2, P3 three point collinearity",1,円形コンベアP 1、P 2、P 3の3点共線
+#define,The tracking direction of the linear conveyor belt is zero,0x0F0085,1,The tracking direction of the linear conveyor belt is zero,直线传送带跟踪方向为零,The tracking direction of the linear conveyor belt is zero,1,リニアコンベアトラッキング方向がゼロ
+#define,Robot power over limit,0x0F0100,1,Robot power over limit,机器人功率超限,Robot power over limit,1,ロボットの電力制限を超えました
+#define,Robot momentum over limit,0x0F0101,1,Robot momentum over limit,机器人动量超限,Robot momentum over limit,1,ロボット運動量超過
+#define,The base sensor detects the collision,0x0F0102,1,The base sensor detects the collision,底座传感器检测到碰撞,The base sensor detects the collision,1,ベースセンサーが衝突を検出しました
+#define,"End force exceeds the limit | collision detected in joint 1",0x0F0103,1,"End force exceeds the limit | collision detected in joint 1",末端力超限，1轴检测到碰撞,"End force exceeds the limit, collision detected in joint 1",1,エンド フォースを超えました。1 つの軸が干渉を検出しました
+#define,"End force exceeds the limit | collision detected in joint 2",0x0F0104,1,"End force exceeds the limit | collision detected in joint 2",末端力超限，2轴检测到碰撞,"End force exceeds the limit, collision detected in joint 2",1,エンド フォースを超えました。2 軸の衝突が検出されました
+#define,"End force exceeds the limit | collision detected in joint 3",0x0F0105,1,"End force exceeds the limit | collision detected in joint 3",末端力超限，3轴检测到碰撞,"End force exceeds the limit, collision detected in joint 3",1,エンド フォースを超えました。3 軸が干渉を検出しました
+#define,"End force exceeds the limit | collision detected in joint 4",0x0F0106,1,"End force exceeds the limit | collision detected in joint 4",末端力超限，4轴检测到碰撞,"End force exceeds the limit, collision detected in joint 4",1,エンド フォースを超えました。4 軸が衝突を検出しました
+#define,"End force exceeds the limit | collision detected in joint 5",0x0F0107,1,"End force exceeds the limit | collision detected in joint 5",末端力超限，5轴检测到碰撞,"End force exceeds the limit, collision detected in joint 5",1,エンドフォース超過、5軸衝突検出
+#define,"End force exceeds the limit | collision detected in joint 6",0x0F0108,1,"End force exceeds the limit | collision detected in joint 6",末端力超限，6轴检测到碰撞,"End force exceeds the limit, collision detected in joint 6",1,エンドフォースが限界を超え、6軸が衝突を検出
+#define,The points of safety plane error ,0x0F0109,1,Points of safety plane cannot be collinear or coincide. ,安全平面点设置错误,Points of safety plane cannot be collinear or coincide. ,1,安全面ポイント設定エラー
+#define,Unable to set dynamics parameters,0x0F0110,1,"To set the dynamics parameters, the robot should be powered off and disabled. ",无法设置动力学参数,"To set the dynamics parameters, the robot should be powered off and disabled. ",1,動的パラメータ設定が異常です
+#define,Dynamics parameter settings interruption,0x0F0111,1,Unexpected interruption of parameter setting during setting of dynamics parameters. ,设置动力学参数中断,Unexpected interruption of parameter setting during setting of dynamics parameters. ,1,動的パラメータ設定が異常です
+#define,Dynamics parameter settings timeout,0x0F0112,1,Parameter settings timeout during setting of dynamics parameters. ,设置动力学参数超时,Parameter settings timeout during setting of dynamics parameters. ,1,動的パラメータ設定が異常です
+#define,Unsupported control cabinet types,0x0F0113,2,The control cabinet is no longer supported in this version,不支持的控制柜类型,The control cabinet is no longer supported in this version,1,サポートされていない制御キャビネットのタイプ
+#define,Unable to identify in the disabled state,0x0F0114,2,Unable to identify in the disabled state,无法在下使能状态下进行辨识,Unable to identify in the disabled state,1,イネーブル状態での認識ができない
+#define,Failed to obtain the bottom network port IP address,0x0F0115,1,Failed to obtain the bottom network port IP address,获取底部网口ip失败,Failed to obtain the bottom network port IP address,1,IP アドレスを取得できませんでした
+#define,Exceed soft limit of force sensor,0x0F0140,1,Exceed soft limit of force sensor,超出设定力值软限位,Exceed soft limit of force sensor,1,設定力値を超えるソフトリミット
+#define,Exceed measurement range of force sensor ,0x0F0141,1,Exceed measurement range of force sensor ,超过传感器最大量程,Exceed measurement range of force sensor ,1,センサの最大レンジを超える
+#define,The number of AddOn has exceeded the limit,0x0F0116,1,the number of currently installed AddOn has reached the upper limit of < 10 >,AddOn数量超限,the number of currently installed AddOn has reached the upper limit of < 10 >,1,アドオンの数が制限を超えている
+#define,The AddOn service does not exist,0x0F0117,1,the service corresponding file in the AddOn configuration file does not exist,AddOn服务不存在,the service corresponding file in the AddOn configuration file does not exist,1,アドオンサービスが存在しません
+#define,AddOn Port View Idle Port Number Failed,0x0F0118,1,AddOn Port View Idle Port Number Failed,AddOn端口查看空闲端口号失败,AddOn Port View Idle Port Number Failed,1,AddOnポートのアイドルポート番号の表示に失敗しました
+#define,AddOn port number allocation failed,0x0F0119,1,AddOn port number allocation failed,AddOn端口号分配失败,AddOn port number allocation failed,1,AddOnポート番号の割り当てに失敗しました
+#define,Failed to perform operation on running AddOn,0x0F011A,1,Unable to perform current operation on running AddOn,运行中AddOn操作失败,Unable to perform current operation on running AddOn,1,実行中のAddOn操作に失敗しました
+#define,Failed to perform AddOn operation on stopped,0x0F011B,1,Unable to perform current operation on a stopped AddOn,已停止AddOn操作失败,Unable to perform current operation on a stopped AddOn,1,停止したAddOn操作に失敗しました
+#define,Unknown AddOn operation,0x0F011C,1,The controller has an unsupported AddOn instruction,未知的AddOn操作,The controller has an unsupported AddOn instruction,1,不明なAddOnアクション
+#define,duplicate port occupation,0x0F011D,1,There is a duplicate port occupation for AddOn in the system,系统AddOn端口重复,There is a duplicate port occupation for AddOn in the system,1,システムAddOnポートの繰り返し
+#define,AddOn unknown error,0x0F011E,1,AddOn unknown error,AddOn未知错误,AddOn unknown error,1,AddOn不明エラー
+#define,Failed to operate built-in AddOn,0x0F011F,1,Unable to perform current operation on system AddOn,操作系统AddOn失败,Unable to perform current operation on system AddOn,1,built-in AddOnを操作できませ
+#define,The operation on exception AddOn failed,0x0F0120,1,Unable to operate AddOn that is not recognized by the current version,操作失效AddOn失败,Unable to operate AddOn that is not recognized by the current version,1,操作が失敗しましたAddOnが失敗しました
+#define,Invalid configuration file in AddOn,0x0F0121,1,Invalid config.ini file in AddOn,AddOn内配置文件无效,Invalid config.ini file in AddOn,1,AddOn内のプロファイルが無効です
+#define,Invalid configuration file in AddOn,0x0F0122,1,AddOn is missing necessary configuration items,AddOn内配置文件无效,AddOn is missing necessary configuration items,1,AddOn内のプロファイルが無効です
+#define,Invalid configuration file in AddOn,0x0F0123,1,AddOn Port Error,AddOn内配置文件无效,AddOn Port Error,1,AddOn内のプロファイルが無効です
+#define,Invalid configuration file in AddOn,0x0F0124,1,Invalid Language in AddOn configuration file,AddOn内配置文件无效,Invalid Language in AddOn configuration file,1,AddOn内のプロファイルが無効です
+#define,Invalid configuration file in AddOn,0x0F0125,1,type error in AddOn configuration file,AddOn内配置文件无效,type error in AddOn configuration file,1,AddOn内のプロファイルが無効です
+#define,Invalid configuration file in AddOn,0x0F0126,1,Serviceenabled error in AddOn configuration file,AddOn内配置文件无效,Serviceenabled error in AddOn configuration file,1,AddOn内のプロファイルが無効です
+#define,Invalid configuration file in AddOn,0x0F0127,1,Service error in AddOn configuration file,AddOn内配置文件无效,Service error in AddOn configuration file,1,AddOn内のプロファイルが無効です
+#define,Invalid configuration file or AddOn directory name in AddOn,0x0F0128,1,Invalid configuration file in AddOn,AddOn内配置文件无效或AddOn目录名无效,Invalid configuration file in AddOn,1,AddOn内のプロファイルが無効またはAdOnディレクトリ名が無効です
+#define,Invalid configuration file in AddOn,0x0F0129,1,Invalid description in configuration file in AddOn,AddOn内配置文件无效,Invalid description in configuration file in AddOn,1,AddOn内のプロファイルが無効です
+#define,Invalid configuration file in AddOn,0x0F012A,1,The URL format in the configuration file in AddOn is incorrect,AddOn内配置文件无效,The URL format in the configuration file in AddOn is incorrect,1,AddOn内のプロファイルが無効です
+#define,Invalid configuration file in AddOn,0x0F012B,1,Invalid convention in the configuration file in AddOn,AddOn内配置文件无效,Invalid convention in the configuration file in AddOn,1,AddOn内のプロファイルが無効です
+#define,AddOn installation package error,0x0F012C,1,AddOn installation package is corrupt or unrecognized,AddOn安装包错误,AddOn installation package is corrupt or unrecognized,1,AddOnインストールパッケージエラー
+#define,AddOn installation package error,0x0F012D,1,AddOn installation package error,AddOn安装包错误,AddOn installation package error,1,AddOnインストールパッケージエラー
+#define,AddOn installation package error,0x0F012E,1,AddOn package decompression failed,AddOn安装包错误,AddOn package decompression failed,1,AddOnインストールパッケージエラー
+#define,AddOn installation package error,0x0F012F,1,Another installation task is running,AddOn安装包错误,Another installation task is running,1,AddOnインストールパッケージエラー
+#define,There are currently no installation tasks,0x0F0130,1,There are currently no installation tasks,当前无安装任务,There are currently no installation tasks,1,現在インストールタスクはありません
+#define,AddOn installation package error,0x0F0131,1,AddOn installation package compression error,AddOn安装包错误,AddOn installation package compression error,1,AddOnインストールパッケージエラー
+#define,AddOn installation package error,0x0F0132,1,AddOn compression failed,AddOn安装包错误,AddOn compression failed,1,AddOnインストールパッケージエラー
+#define,AddOn installation package error,0x0F0133,1,Missing files in AddOn installation package,AddOn安装包错误,Missing files in AddOn installation package,1,AddOnインストールパッケージエラー
+#define,Share program success,0x0F0134,1,Share program success,分享程序成功,Share program success,0,プログラムが正常に共有されました。
+#define,The program failed to be shared.,0x0F0135,1,The program failed to be shared.,分享程序失败,The program failed to be shared.,0,プログラムの共有に失敗しました。
+#define,"Enable timeout, please power on again",0x0F1001,1,"Enable timeout, please power on again",使能超时 请重新打开电源,"Enable timeout, please power on again",1,タイムアウトを有効にします。もう一度電源を入れてください
+#define,Servo version No. retrieval timeout ,0x0F1002,1,Servo version No. retrieval timeout,伺服版本号查询超时,Servo version No. retrieval timeout,1,サーバーのバージョン番号のクエリがタイムアウトしました
+#define,Joint 1 CAN communication error,0x001002,1,Joint 1 CAN communication error,关节一CAN连接异常,Joint 1 CAN communication error,1,Joint-CAN接続異常
+#define,Joint 2 CAN communication error,0x011002,1,Joint 2 CAN communication error,关节二CAN连接异常,Joint 2 CAN communication error,1,ジョイント 2 の CAN 接続が異常です
+#define,Joint 3 CAN communication error,0x021002,1,Joint 3 CAN communication error,关节三CAN连接异常,Joint 3 CAN communication error,1,ジョイント3 CAN接続異常
+#define,Joint 4 CAN communication error,0x031002,1,Joint 4 CAN communication error,关节四CAN连接异常,Joint 4 CAN communication error,1,ジョイント4 CAN接続異常
+#define,Joint 5 CAN communication error,0x041002,1,Joint 5 CAN communication error,关节五CAN连接异常,Joint 5 CAN communication error,1,ジョイント5 CAN接続異常
+#define,Joint 6 CAN communication error,0x051002,1,Joint 6 CAN communication error,关节六CAN连接异常,Joint 6 CAN communication error,1,ジョイント6 CAN接続異常
+#define,Joint 1 drive error ,0x001003,1,Joint 1 drive error,关节一驱动器故障,Joint 1 drive error,1,ジョイントドライブの故障
+#define,Joint 2 drive error,0x011003,1,Joint 2 drive error,关节二驱动器故障,Joint 2 drive error,1,ジョイント 2 ドライブの障害
+#define,Joint 3 drive error,0x021003,1,Joint 3 drive error,关节三驱动器故障,Joint 3 drive error,1,ジョイント 3 ドライブ障害
+#define,Joint 4 drive error,0x031003,1,Joint 4 drive error,关节四驱动器故障,Joint 4 drive error,1,ジョイント クワッド ドライブの障害
+#define,Joint 5 drive error,0x041003,1,Joint 5 drive error,关节五驱动器故障,Joint 5 drive error,1,ジョイント 5 ドライブ障害
+#define,Joint 6 drive error,0x051003,1,Joint 6 drive error,关节六驱动器故障,Joint 6 drive error,1,ジョイント 6 ドライブの障害
+#define,Joint 1 following error too high,0x001004,1,Joint 1 following error too high,关节一跟随误差过大,Joint 1 following error too high,1,ジョイント 1 の追従誤差が大きすぎます
+#define,Joint 2 following error too high,0x011004,1,Joint 2 following error too high,关节二跟随误差过大,Joint 2 following error too high,1,ジョイント 2 の追従誤差が大きすぎます
+#define,Joint 3 following error too high,0x021004,1,Joint 3 following error too high,关节三跟随误差过大,Joint 3 following error too high,1,ジョイント 3 の追従誤差が大きすぎます
+#define,Joint 4 following error too high,0x031004,1,Joint 4 following error too high,关节四跟随误差过大,Joint 4 following error too high,1,ジョイント 4 の追従誤差が大きすぎます
+#define,Joint 5 following error too high,0x041004,1,Joint 5 following error too high,关节五跟随误差过大,Joint 5 following error too high,1,ジョイント 5 の追従誤差が大きすぎます
+#define,Joint 6 following error too high,0x051004,1,Joint 6 following error too high,关节六跟随误差过大,Joint 6 following error too high,1,ジョイント 6 の追従誤差が大きすぎます
+#define,Programming file syntax error,0x0F2000,1,Programming file syntax error,编程文件语法错误,Programming file syntax error,1,プログラミング ファイルの構文エラー
+#define,No programming file opened,0x0F2001,1,No programming file opened,没有编程文件打开,No programming file opened,1,プログラミングファイルが開いていません
+#define,Programming file open failure,0x0F2002,1,Programming file open failure,编程文件打开失败,Programming file open failure,1,プログラミング ファイルのオープンに失敗しました
+#define,Programming file close failure,0x0F2003,1,Programming file close failure,编程文件关闭失败,Programming file close failure,1,プログラミング ファイルのクローズに失敗しました
+#define,Parsing error,0x0F2010,1,Parsing error,解析错误,Parsing error,1,解析エラー
+#define,PyCall () failure,0x0F2011,1,PyCall () failure,PyCall()失败,PyCall () failure,1,PyCall() に失敗しました
+#define,Parsing and assertion failure,0x0F2012,1,Parsing and assertion failure,解析断言失败,Parsing and assertion failure,1,アサーションの解析に失敗しました
+#define,Parsing fails and the radius of the arc is zero. ,0x0F2013,1,Parsing fails and the radius of the arc is zero.,解析失败，圆弧半径为零,Parsing fails and the radius of the arc is zero.,1,解析に失敗しました。弧の半径はゼロです
+#define,"Parsing failure | syntax error",0x0F2014,1,"Parsing failure | syntax error",解析失败，语法错误,"Parsing failure, syntax error",1,解析に失敗しました、構文エラーです
+#define,Network connection failure,0x0F2015,1,Network connection failure,网络连接失败,Network connection failure,1,ネットワーク接続に失敗しました
+#define,Failed to connect to the server,0x0F2016,1,Failed to connect to the server,连接服务端失败,Failed to connect to the server,1,サーバーへの接続に失敗しました
+#define,Communication failed. Server not connected. ,0x0F2017,1,Communication failed. Server not connected.,通讯失败未连接服务器,Communication failed. Server not connected.,1,サーバーに接続されていないため、通信に失敗しました
+#define,TCP/IP data receiving failure ,0x0F2018,1,TCP/IP data receiving failure,TCP/IP接收数据失败,TCP/IP data receiving failure,1,TCP/IP がデータを受信できませんでした
+#define,TCP/IP data sending failure,0x0F2019,1,TCP/IP data sending failure,TCP/IP发送数据失败,TCP/IP data sending failure,1,TCP/IP がデータを送信できませんでした
+#define,Failed to load 2D visual configuration ,0x0F201A,1,Failed to load 2D visual configuration,加载2D视觉配置失败,Failed to load 2D visual configuration,1,2D ビジョン構成の読み込みに失敗しました
+#define,Internal error,0x0F201B,1,Internal error,内部错误,Internal error,1,内部エラー
+#define,Program syntax error,0x0F201C,1,Program syntax error,作业程序语法错误,Program syntax error,1,ジョブプログラムの構文エラー
+#define,Program syntax error,0x0F201D,1,Program syntax error,作业程序语法错误,Program syntax error,1,ジョブプログラムの構文エラー
+#define,Program syntax error,0x0F201E  ,1,Program syntax error,作业程序语法错误,Program syntax error,1,ジョブプログラムの構文エラー
+#define,Program syntax error,0x0F201F,1,Program syntax error,作业程序语法错误,Program syntax error,1,ジョブプログラムの構文エラー
+#define,Program syntax error,0x0F2020  ,1,Program syntax error,作业程序语法错误,Program syntax error,1,ジョブプログラムの構文エラー
+#define,The method should not be called ,0x0F2021  ,1,The method should not be called,方法不该被调用,The method should not be called,1,メソッドを呼び出してはいけません
+#define,Unknown operation,0x0F2022 ,1,Unknown operation,未知操作,Unknown operation,1,不明な操作
+#define,Data format error ,0x0F2023 ,1,Data format error,错误数据格式,Data format error,1,間違ったデータ形式
+#define,Undefined parameter,0x0F2024  ,1,Undefined parameter,参数未定义,Undefined parameter,1,パラメータが定義されていません
+#define,Failed to open the file,0x0F2025 ,1,Failed to open the file,打开文件失败,Failed to open the file,1,ファイルを開くことができません
+#define,Program syntax error,0x0F2026,1,Program syntax error,作业程序语法错误,Program syntax error,1,ジョブプログラムの構文エラー
+#define,Out of memory,0x0F2027 ,1,Out of memory,内存不足,Out of memory,1,ストレージが足りない
+#define,Return value type error,0x0F2028 ,1,Return value type error,返回值类型错误,Return value type error,1,戻り値の型が間違っている
+#define,Program syntax error,0x0F2029,1,Program syntax error,作业程序语法错误,Program syntax error,1,ジョブプログラムの構文エラー
+#define,Unable to add the parameter ,0x0F202a ,1,Unable to add the parameter,不能添加参数,Unable to add the parameter,1,パラメータを追加できません
+#define,User-defined error,0x0F202B,1,User-defined error,用户定义错误,User-defined error,1,ユーザー定義エラー
+#define,Program syntax error,0x0F202C,1,Program syntax error,作业程序语法错误,Program syntax error,1,ジョブプログラムの構文エラー
+#define,Program syntax error,0x0F202D,1,Program syntax error,作业程序语法错误,Program syntax error,1,ジョブプログラムの構文エラー
+#define,Program syntax error,0x0F202E   ,1,Program syntax error,作业程序语法错误,Program syntax error,1,ジョブプログラムの構文エラー
+#define,Program syntax error,0x0F202F,1,Program syntax error,作业程序语法错误,Program syntax error,1,ジョブプログラムの構文エラー
+#define,Program syntax error,0x0F2030,1,Program syntax error,作业程序语法错误,Program syntax error,1,ジョブプログラムの構文エラー
+#define,Program syntax error,0x0F2031   ,1,Program syntax error,作业程序语法错误,Program syntax error,1,ジョブプログラムの構文エラー
+#define,Program syntax error,0x0F2032  ,1,Program syntax error,作业程序语法错误,Program syntax error,1,ジョブプログラムの構文エラー
+#define,The command is too long,0x0F2033 ,1,The command is too long,指令过长,The command is too long,1,コマンドが長すぎる
+#define,Program syntax error,0x0F2034,1,Program syntax error,作业程序语法错误,Program syntax error,1,ジョブプログラムの構文エラー
+#define,Program syntax error,0x0F2035  ,1,Program syntax error,作业程序语法错误,Program syntax error,1,ジョブプログラムの構文エラー
+#define,File is not open,0x0F2036  ,1,File is not open,文件没有打开,File is not open,1,ファイルが開いていません
+#define,Duplicate definition,0x0F2037 ,1,Duplicate definition,重复定义,Duplicate definition,1,重複定義
+#define,Program syntax error,0x0F2038,1,Program syntax error,作业程序语法错误,Program syntax error,1,ジョブプログラムの構文エラー
+#define,Repeatedly open the file,0x0F2039,1,Repeatedly open the file,重复打开文件,Repeatedly open the file,1,ファイルを繰り返し開けない
+#define,Unmatched 'end' keyword,0x0F203A,1,There is an unmatched 'end' keyword in the script program.,未匹配的‘end’关键字,There is an unmatched 'end' keyword in the script program.,1,'end' キーワードが一致しません
+#define,Failed to create thread,0x0F203B,1,Too many threads created. ,创建线程失败,Too many threads created. ,1,スレッドの作成に失敗しました
+#define,Failed to create thread,0x0F203C,1,Failed to create thread,创建线程失败,Failed to create thread,1,スレッドの作成に失敗しました
+#define,Unmatched keywords, 0x0F203D,1,Unmatched elif,未匹配的关键字,Unmatched elif,1,一致しないキーワード
+#define,Unmatched keywords,0x0F203E,1,Unmatched else,未匹配的关键字,Unmatched else,1,一致しないキーワード
+#define,Unmatched keywords,0x0F203F,1,Unmatched break,未匹配的关键字,Unmatched break,1,一致しないキーワード
+#define,Unmatched keywords,0x0F2040,1,Unmatched continue,未匹配的关键字,Unmatched continue,1,一致しないキーワード
+#define,Unmatched keywords,0x0F2041,1,Unmatched return,未匹配的关键字,Unmatched return,1,一致しないキーワード
+#define,TIO semaphore retrieval failure,0x0F2042,1,TIO semaphore retrieval failure,TIO信号量读取失败,TIO semaphore retrieval failure,1,TIO信号量読み出し失敗
+#define,Failed to add system variable,0x0F2043,1,Failed to add system variable,添加系统变量失败,Failed to add system variable,1,システム変数の追加に失敗しました
+#define,Invalid SOCKET ID,0x0F2050,1,Invalid SOCKET ID,SOCKET id 无效,Invalid SOCKET ID,1,SOCKET id 無効 
+#define,Inverse Kinematic failure,0x0F2051,1,Inverse Kinematic failure,逆解失败,Inverse Kinematic failure,1,逆解に失敗しました
+#define,Forward Kinematic failure,0x0F2052,1,Forward Kinematic failure,正解失败,Forward Kinematic failure,1,正しい解決に失敗しました
+#define,TCP/IP communication receives error data,0x0F2053,1,TCP/IP communication receives error data,TCP/IP 通讯接收到错误数据,TCP/IP communication receives error data,1,TCP/IP 通信が間違ったデータを受信した
+#define,Invalid array variable,0x0F2054,1,Invalid array variable,数组变量无效,Invalid array variable,1,配列変数が無効です
+#define,Invalid array element index,0x0F2055,1,Invalid array element index,数组元素索引无效,Invalid array element index,1,配列要素のインデックスが無効です
+#define,Invalid positional interpolation coefficient ,0x0F2056,1,Invalid positional interpolation coefficient,位姿插值系数无效,Invalid positional interpolation coefficient,1,ポーズ補間係数が無効です
+#define,The control block does not match the terminator ,0x0F2057,1,The control block does not match the terminator,控制块结束符不匹配,The control block does not match the terminator,1,制御ブロック ターミネータの不一致
+#define,Unsupported escape characters ,0x0F2058,1,Unsupported escape characters,不支持的转义字符,Unsupported escape characters,1,サポートされていないエスケープ文字
+#define,Invalid access parameters of array ,0x0F2059,1,Invalid access parameters of array,无效的数组切割间距参数,Invalid access parameters of array,1,配列カット間隔パラメータが無効です
+#define,Unsupported array nesting,0x0F2060        ,1,Unsupported array nesting,不支持数组嵌套,Unsupported array nesting,1,配列のネストはサポートされていません
+#define,String arrays are not supported ,0x0F2061,1,String arrays are not supported,不支持字符串数组,String arrays are not supported,1,文字列配列はサポートされていません
+#define,SOCKET resources are over-allocated and not released ,0x0F2062,1,SOCKET resources are over-allocated and not released,SOCKET资源分配过多而未释放,SOCKET resources are over-allocated and not released,1,割り当てられているが解放されていないソケット リソースが多すぎる
+#define,Receiving SOCKET data is invalid ,0x0F2063,1,Receiving SOCKET data is invalid,SOCKET 接收的数据无效,Receiving SOCKET data is invalid,1,ソケットが無効なデータを受信しました
+#define,Mismatched array length received by the SOCKET ,0x0F2064,1, Mismatched array length received by the SOCKET, Socket 接收到的数组长度不匹配, Mismatched array length received by the SOCKET,1,ソケットが受け取った配列の長さが一致しません
+#define,Mismatched data types received by the SOCKET,0x0F2065,1, Mismatched data types received by the SOCKET, Socket 接收到的数据类型不匹配, Mismatched data types received by the SOCKET,1,ソケットが受信したデータ型が一致しません
+#define,The collision sensitivity level setting function is not enabled,0x0F2066,0, The collision sensitivity level setting function is not enabled, 设置碰撞灵敏度等级功能未启用, The collision sensitivity level setting function is not enabled,1,衝突感度レベルの設定機能が有効になっていません
+#define,Cannot compare different types of data,0x0F2067,1,Different types of variables cannot be compared by "<" > "" <=" ">=",不能比较不同类型的数据,Different types of variables cannot be compared by "<" > "" <=" ">=",1,異なるタイプのデータを比較することはできません
+#define,Failed to connect to specified visual device,0x0F3001 ,1,Failed to connect to specified visual device,连接指定视觉设备失败,Failed to connect to specified visual device,1,指定されたビジュアル デバイスへの接続に失敗しました
+#define,No visual device,0x0F3002,1,No visual device,没有连接视觉设备,No visual device,1,ビジョンデバイスが接続されていません
+#define,Servo status reading failure ,0x0F4001,1,Servo status reading failure,伺服状态读取失败,Servo status reading failure,1,サーボ ステート マシン エラー
+#define,Firmware upgrade failure,0x0F4002,1,Firmware upgrade failure,固件升级失败,Firmware upgrade failure,1,ファームウェアのアップグレードに失敗しました
+#define,The hardware does not support this function ,0x0F4003,1,The hardware does not support this function,当前硬件不支持该功能,The hardware does not support this function,1,現在のハードウェアはこの機能をサポートしていません
+#define,Robot self-diagnosis error,0x0F4004,2,Potential risks for robot joints {0} ,机器人自诊断异常,Potential risks for robot joints {0} ,1,ロボット自己診断異常
+#define,Joint 1 busbar overcurrent,0x102230,1,Joint 1 busbar overcurrent,关节1母线过流,Joint 1 busbar overcurrent,1,ジョイント 1 バス過電流
+#define,Joint 2 busbar overcurrent,0x112230,1,Joint 2 busbar overcurrent,关节2母线过流,Joint 2 busbar overcurrent,1,ジョイント 2 バス過電流
+#define,Joint 3 busbar overcurrent,0x122230,1,Joint 3 busbar overcurrent,关节3母线过流,Joint 3 busbar overcurrent,1,ジョイント 3 バスバー過電流
+#define,Joint 4 busbar overcurrent,0x132230,1,Joint 4 busbar overcurrent,关节4母线过流,Joint 4 busbar overcurrent,1,ジョイント 4 バス過電流
+#define,Joint 5 busbar overcurrent,0x142230,1,Joint 5 busbar overcurrent,关节5母线过流,Joint 5 busbar overcurrent,1,ジョイント 5 バスバー過電流
+#define,Joint 6 busbar overcurrent,0x152230,1,Joint 6 busbar overcurrent,关节6母线过流,Joint 6 busbar overcurrent,1,ジョイント 6 バスバー過電流
+#define,Joint 1 output overcurrent,0x102320,1,Joint 1 output overcurrent,关节一输出过流,Joint 1 output overcurrent,1,ジョイント1出力過電流
+#define,Joint 2 output overcurrent,0x112320,1,Joint 2 output overcurrent,关节二输出过流,Joint 2 output overcurrent,1,ジョイント 2 出力過電流
+#define,Joint 3 output overcurrent,0x122320,1,Joint 3 output overcurrent,关节三输出过流,Joint 3 output overcurrent,1,ジョイント 3 出力過電流
+#define,Joint 4 output overcurrent,0x132320,1,Joint 4 output overcurrent,关节四输出过流,Joint 4 output overcurrent,1,関節4出力過電流
+#define,Joint 5 output overcurrent,0x142320,1,Joint 5 output overcurrent,关节五输出过流,Joint 5 output overcurrent,1,ジョイント5出力過電流
+#define,Joint 6 output overcurrent,0x152320,1,Joint 6 output overcurrent,关节六输出过流,Joint 6 output overcurrent,1,ジョイント6出力過電流
+#define,Joint 1 self-training overcurrent,0x102321,1,Joint 1 self-training overcurrent,关节一自学习过流,Joint 1 self-training overcurrent,1,ジョイントワン自己学習過電流
+#define,Joint 2 self-training overcurrent,0x112321,1,Joint 2 self-training overcurrent,关节二自学习过流,Joint 2 self-training overcurrent,1,ジョイント 2 自己学習過電流
+#define,Joint 3 self-training overcurrent,0x122321,1,Joint 3 self-training overcurrent,关节三自学习过流,Joint 3 self-training overcurrent,1,ジョイント 3 自己学習過電流
+#define,Joint 4 self-training overcurrent,0x132321,1,Joint 4 self-training overcurrent,关节四自学习过流,Joint 4 self-training overcurrent,1,ジョイント 4 自己学習過電流
+#define,Joint 5 self-training overcurrent,0x142321,1,Joint 5 self-training overcurrent,关节五自学习过流,Joint 5 self-training overcurrent,1,ジョイント 5 自己学習過電流
+#define,Joint 6 self-training overcurrent,0x152321,1,Joint 6 self-training overcurrent,关节六自学习过流,Joint 6 self-training overcurrent,1,ジョイント 6 自己学習過電流
+#define,Joint 1 forward velocity tracking error,0x108480,1,Joint 1 forward velocity tracking error,关节一正向速度跟踪错误,Joint 1 forward velocity tracking error,1,ジョイント 1 前方速度トラッキング エラー
+#define,Joint 2 forward velocity tracking error,0x118480,1,Joint 2 forward velocity tracking error,关节二正向速度跟踪错误,Joint 2 forward velocity tracking error,1,ジョイント 2 前方速度トラッキング エラー
+#define,Joint 3 forward velocity tracking error,0x128480,1,Joint 3 forward velocity tracking error,关节三正向速度跟踪错误,Joint 3 forward velocity tracking error,1,ジョイント 3 前方速度トラッキング エラー
+#define,Joint 4 forward velocity tracking error,0x138480,1,Joint 4 forward velocity tracking error,关节四正向速度跟踪错误,Joint 4 forward velocity tracking error,1,ジョイント 4 前進速度トラッキング エラー
+#define,Joint 5 forward velocity tracking error,0x148480,1,Joint 5 forward velocity tracking error,关节五正向速度跟踪错误,Joint 5 forward velocity tracking error,1,ジョイント 5 前方速度追跡エラー
+#define,Joint 6 forward velocity tracking error,0x158480,1,Joint 6 forward velocity tracking error,关节六正向速度跟踪错误,Joint 6 forward velocity tracking error,1,ジョイント 6 前進速度トラッキング エラー
+#define,Joint 1 negative velocity tracking error,0x108481,1,Joint 1 negative velocity tracking error,关节一负向速度跟踪错误,Joint 1 negative velocity tracking error,1,ジョイント 1 の負の速度トラッキング エラー
+#define,Joint 2 negative velocity tracking error,0x118481,1,Joint 2 negative velocity tracking error,关节二负向速度跟踪错误,Joint 2 negative velocity tracking error,1,ジョイント 2 の負の速度トラッキング エラー
+#define,Joint 3 negative velocity tracking error,0x128481,1,Joint 3 negative velocity tracking error,关节三负向速度跟踪错误,Joint 3 negative velocity tracking error,1,ジョイント 3 の負の速度トラッキング エラー
+#define,Joint 4 negative velocity tracking error,0x138481,1,Joint 4 negative velocity tracking error,关节四负向速度跟踪错误,Joint 4 negative velocity tracking error,1,ジョイント 4 の負の速度トラッキング エラー
+#define,Joint 5 negative velocity tracking error,0x148481,1,Joint 5 negative velocity tracking error,关节五负向速度跟踪错误,Joint 5 negative velocity tracking error,1,ジョイント 5 の負の速度トラッキング エラー
+#define,Joint 6 negative velocity tracking error,0x158481,1,Joint 6 negative velocity tracking error,关节六负向速度跟踪错误,Joint 6 negative velocity tracking error,1,ジョイント 6 負速度トラッキング エラー
+#define,The speed of joint 1 exceeds the limit,0x108482,1,The speed of joint 1 exceeds the limit,关节一速度超限,The speed of joint 1 exceeds the limit,1,関節制限速度
+#define,The speed of joint 2 exceeds the limit,0x118482,1,The speed of joint 2 exceeds the limit,关节二速度超限,The speed of joint 2 exceeds the limit,1,ジョイント2速オーバーラン
+#define,The speed of joint 3 exceeds the limit,0x128482,1,The speed of joint 3 exceeds the limit,关节三速度超限,The speed of joint 3 exceeds the limit,1,ジョイント 3 速オーバーラン
+#define,The speed of joint 4 exceeds the limit,0x138482,1,The speed of joint 4 exceeds the limit,关节四速度超限,The speed of joint 4 exceeds the limit,1,ジョイント 4 速オーバーラン
+#define,The speed of joint 5 exceeds the limit,0x148482,1,The speed of joint 5 exceeds the limit,关节五速度超限,The speed of joint 5 exceeds the limit,1,ジョイント5速オーバーラン
+#define,The speed of joint 6 exceeds the limit,0x158482,1,The speed of joint 6 exceeds the limit,关节六速度超限,The speed of joint 6 exceeds the limit,1,ジョイント 6 速オーバーラン
+#define,Joint 1 speed tracking error too large ,0x108483,1,Joint 1 speed tracking error too large,关节一速度跟踪误差过大,Joint 1 speed tracking error too large,1,ジョイント速度トラッキング エラーが大きすぎます
+#define,Joint 2 speed tracking error too high,0x118483,1,Joint 2 speed tracking error too high,关节二速度跟踪误差过大,Joint 2 speed tracking error too high,1,ジョイント 2 の速度トラッキング エラーが大きすぎます
+#define,Joint 3 speed tracking error too high,0x128483,1,Joint 3 speed tracking error too high,关节三速度跟踪误差过大,Joint 3 speed tracking error too high,1,ジョイント 3 速トラッキング エラーが大きすぎます
+#define,Joint 4 speed tracking error too high,0x138483,1,Joint 4 speed tracking error too high,关节四速度跟踪误差过大,Joint 4 speed tracking error too high,1,ジョイント 4 スピード トラッキング エラーが大きすぎます
+#define,Joint 5 speed tracking error too high,0x148483,1,Joint 5 speed tracking error too high,关节五速度跟踪误差过大,Joint 5 speed tracking error too high,1,ジョイント 5 速度のトラッキング エラーが大きすぎます
+#define,Joint 6 speed tracking error too high,0x158483,1,Joint 6 speed tracking error too high,关节六速度跟踪误差过大,Joint 6 speed tracking error too high,1,ジョイント 6 スピード トラッキング エラーが大きすぎます
+#define,The acceleration of joint 1 exceeds the limit,0x108484,1,The acceleration of joint 1 exceeds the limit,关节一加速度超差,The acceleration of joint 1 exceeds the limit,1,許容範囲外の関節加速度
+#define,The acceleration of joint 2 exceeds the limit,0x118484,1,The acceleration of joint 2 exceeds the limit,关节二加速度超差,The acceleration of joint 2 exceeds the limit,1,ジョイント 2 の加速度が許容範囲外
+#define,The acceleration of joint 3 exceeds the limit,0x128484,1,The acceleration of joint 3 exceeds the limit,关节三加速度超差,The acceleration of joint 3 exceeds the limit,1,つの関節の加速度が許容範囲外です
+#define,The acceleration of joint 4 exceeds the limit,0x138484,1,The acceleration of joint 4 exceeds the limit,关节四加速度超差,The acceleration of joint 4 exceeds the limit,1,つの関節の加速度が許容範囲外です
+#define,The acceleration of joint 5 exceeds the limit,0x148484,1,The acceleration of joint 5 exceeds the limit,关节五加速度超差,The acceleration of joint 5 exceeds the limit,1,許容範囲外の 5 つの関節の加速度
+#define,The acceleration of joint 6 exceeds the limit,0x158484,1,The acceleration of joint 6 exceeds the limit,关节六加速度超差,The acceleration of joint 6 exceeds the limit,1,関節の加速度が許容範囲外です
+#define,Joint 1 speed control error,0x108485,1,Joint 1 speed control error,关节一速度控制异常,Joint 1 speed control error,1,異常な関節速度制御
+#define,Joint 2 speed control error,0x118485,1,Joint 2 speed control error,关节二速度控制异常,Joint 2 speed control error,1,ジョイント 2 の速度制御異常
+#define,Joint 3 speed control error,0x128485,1,Joint 3 speed control error,关节三速度控制异常,Joint 3 speed control error,1,関節三速制御異常
+#define,Joint 4 speed control error,0x138485,1,Joint 4 speed control error,关节四速度控制异常,Joint 4 speed control error,1,関節四速制御異常
+#define,Joint 5 speed control error,0x148485,1,Joint 5 speed control error,关节五速度控制异常,Joint 5 speed control error,1,関節5速制御異常
+#define,Joint 6 speed control error,0x158485,1,Joint 6 speed control error,关节六速度控制异常,Joint 6 speed control error,1,関節6速制御異常
+#define,Joint 1 encoder connection timeout,0x107380,1,Joint 1 encoder connection timeout,关节一编码器连接超时,Joint 1 encoder connection timeout,1,ジョイントエンコーダ接続タイムアウト
+#define,Joint 2 encoder connection timeout,0x117380,1,Joint 2 encoder connection timeout,关节二编码器连接超时,Joint 2 encoder connection timeout,1,ジョイント 2 エンコーダ接続がタイムアウトしました
+#define,Joint 3 encoder connection timeout,0x127380,1,Joint 3 encoder connection timeout,关节三编码器连接超时,Joint 3 encoder connection timeout,1,ジョイント 3 エンコーダー接続タイムアウト
+#define,Joint 4 encoder connection timeout,0x137380,1,Joint 4 encoder connection timeout,关节四编码器连接超时,Joint 4 encoder connection timeout,1,ジョイント 4 エンコーダ接続タイムアウト
+#define,Joint 5 encoder connection timeout,0x147380,1,Joint 5 encoder connection timeout,关节五编码器连接超时,Joint 5 encoder connection timeout,1,ジョイント 5 エンコーダ接続タイムアウト
+#define,Joint 6 encoder connection timeout,0x157380,1,Joint 6 encoder connection timeout,关节六编码器连接超时,Joint 6 encoder connection timeout,1,ジョイント 6 エンコーダー接続タイムアウト
+#define,Joint 1 encoder battery under-voltage,0x107381,1,Joint 1 encoder battery under-voltage,关节一编码器电池欠压,Joint 1 encoder battery under-voltage,1,ジョイントエンコーダのバッテリ不足
+#define,Joint 2 encoder battery under-voltage,0x117381,1,Joint 2 encoder battery under-voltage,关节二编码器电池欠压,Joint 2 encoder battery under-voltage,1,ジョイント 2 エンコーダのバッテリ電圧低下
+#define,Joint 3 encoder battery under-voltage,0x127381,1,Joint 3 encoder battery under-voltage,关节三编码器电池欠压,Joint 3 encoder battery under-voltage,1,ジョイント 3 エンコーダのバッテリ不足
+#define,Joint 4 encoder battery under-voltage,0x137381,1,Joint 4 encoder battery under-voltage,关节四编码器电池欠压,Joint 4 encoder battery under-voltage,1,ジョイント 4 エンコーダのバッテリ不足
+#define,Joint 5 encoder battery under-voltage,0x147381,1,Joint 5 encoder battery under-voltage,关节五编码器电池欠压,Joint 5 encoder battery under-voltage,1,ジョイント 5 エンコーダのバッテリ不足
+#define,Joint 6 encoder battery under-voltage,0x157381,1,Joint 6 encoder battery under-voltage,关节六编码器电池欠压,Joint 6 encoder battery under-voltage,1,ジョイント 6 エンコーダのバッテリ不足
+#define,Joint 1 encoder battery disconnection,0x107382,1,Joint 1 encoder battery disconnection,关节一编码器电池断开,Joint 1 encoder battery disconnection,1,ジョイント 1 エンコーダのバッテリが切断されました
+#define,Joint 2 encoder battery disconnection,0x117382,1,Joint 2 encoder battery disconnection,关节二编码器电池断开,Joint 2 encoder battery disconnection,1,ジョイント 2 エンコーダーのバッテリーが外れました
+#define,Joint 3 encoder battery disconnection,0x127382,1,Joint 3 encoder battery disconnection,关节三编码器电池断开,Joint 3 encoder battery disconnection,1,ジョイント 3 エンコーダのバッテリが切断されました
+#define,Joint 4 encoder battery disconnection,0x137382,1,Joint 4 encoder battery disconnection,关节四编码器电池断开,Joint 4 encoder battery disconnection,1,ジョイント 4 エンコーダのバッテリが切断されました
+#define,Joint 5 encoder battery disconnection,0x147382,1,Joint 5 encoder battery disconnection,关节五编码器电池断开,Joint 5 encoder battery disconnection,1,ジョイント 5 エンコーダのバッテリが切断されました
+#define,Joint 6 encoder battery disconnection,0x157382,1,Joint 6 encoder battery disconnection,关节六编码器电池断开,Joint 6 encoder battery disconnection,1,ジョイント 6 エンコーダのバッテリが切断されました
+#define,Joint 1 encoder storage angle error,0x107383,1,Joint 1 encoder storage angle error,关节一编码器存储角度错误,Joint 1 encoder storage angle error,1,ジョイント 1 エンコーダ格納角度エラー
+#define,Joint 2 encoder storage angle error,0x117383,1,Joint 2 encoder storage angle error,关节二编码器存储角度错误,Joint 2 encoder storage angle error,1,ジョイント 2 エンコーダ格納角度エラー
+#define,Joint 3 encoder storage angle error,0x127383,1,Joint 3 encoder storage angle error,关节三编码器存储角度错误,Joint 3 encoder storage angle error,1,ジョイント 3 エンコーダ格納角度エラー
+#define,Joint 4 encoder storage angle error,0x137383,1,Joint 4 encoder storage angle error,关节四编码器存储角度错误,Joint 4 encoder storage angle error,1,ジョイント 4 エンコーダ格納角度エラー
+#define,Joint 5 encoder storage angle error,0x147383,1,Joint 5 encoder storage angle error,关节五编码器存储角度错误,Joint 5 encoder storage angle error,1,ジョイント 5 エンコーダ格納角度エラー
+#define,Joint 6 encoder storage angle error,0x157383,1,Joint 6 encoder storage angle error,关节六编码器存储角度错误,Joint 6 encoder storage angle error,1,ジョイント 6 エンコーダ格納角度エラー
+#define,Joint 1 encoder count error,0x107384,1,Joint 1 encoder count error,关节一编码器计数错误,Joint 1 encoder count error,1,ジョイント 1 エンコーダ カウント エラー
+#define,Joint 2 encoder count error,0x117384,1,Joint 2 encoder count error,关节二编码器计数错误,Joint 2 encoder count error,1,ジョイント 2 エンコーダ カウント エラー
+#define,Joint 3 encoder count error,0x127384,1,Joint 3 encoder count error,关节三编码器计数错误,Joint 3 encoder count error,1,ジョイント 3 エンコーダ カウント エラー
+#define,Joint 4 encoder count error,0x137384,1,Joint 4 encoder count error,关节四编码器计数错误,Joint 4 encoder count error,1,ジョイント 4 エンコーダ カウント エラー
+#define,Joint 5 encoder count error,0x147384,1,Joint 5 encoder count error,关节五编码器计数错误,Joint 5 encoder count error,1,ジョイント 5 エンコーダ カウント エラー
+#define,Joint 6 encoder count error,0x157384,1,Joint 6 encoder count error,关节六编码器计数错误,Joint 6 encoder count error,1,ジョイント 6 エンコーダ カウント エラー
+#define,Joint 1 two encoders verifying error,0x107385,1,Joint 1 two encoders verifying error,关节一双编码器校验错误,Joint 1 two encoders verifying error,1,ジョイント ワン ダブル エンコーダー検証エラー
+#define,Joint 2 two encoders verifying error ,0x117385,1,Joint 2 two encoders verifying error,关节二双编码器校验错误,Joint 2 two encoders verifying error,1,ジョイント 2 ダブル エンコーダー検証エラー
+#define,Joint 3 two encoders verifying error ,0x127385,1,Joint 3 two encoders verifying error,关节三双编码器校验错误,Joint 3 two encoders verifying error,1,ジョイント トリプル ダブル エンコーダー検証エラー
+#define,Joint 4 two encoders verifying error,0x137385,1,Joint 4 two encoders verifying error,关节四双编码器校验错误,Joint 4 two encoders verifying error,1,ジョイント 4 ダブル エンコーダー検証エラー
+#define,Joint 5 two encoders verifying error ,0x147385,1,Joint 5 two encoders verifying error,关节五双编码器校验错误,Joint 5 two encoders verifying error,1,ジョイント 5 ダブル エンコーダー検証エラー
+#define,Joint 6 two encoders verifying error ,0x157385,1,Joint 6 two encoders verifying error,关节六双编码器校验错误,Joint 6 two encoders verifying error,1,ジョイント 6 ダブル エンコーダー検証エラー
+#define,Joint 1 Z-line capture failure,0x107387    ,1,Joint 1 Z-line capture failure,关节一Z线捕捉故障,Joint 1 Z-line capture failure,1,ジョイント Z ライン スナップの失敗
+#define,Joint 2 Z-line capture failure,0x117387,1,Joint 2 Z-line capture failure,关节二Z线捕捉故障,Joint 2 Z-line capture failure,1,ジョイント 2 の Z ラインのキャプチャ失敗
+#define,Joint 3 Z-line capture failure,0x127387,1,Joint 3 Z-line capture failure,关节三Z线捕捉故障,Joint 3 Z-line capture failure,1,ジョイント トリプル Z ライン スナップの失敗
+#define,Joint 4 Z-line capture failure,0x137387,1,Joint 4 Z-line capture failure,关节四Z线捕捉故障,Joint 4 Z-line capture failure,1,ジョイント 4 の Z ライン スナップの失敗
+#define,Joint 5 Z-line capture failure,0x147387,1,Joint 5 Z-line capture failure,关节五Z线捕捉故障,Joint 5 Z-line capture failure,1,ジョイント 5 の Z ライン スナップの失敗
+#define,Joint 6 Z-line capture failure,0x157387,1,Joint 6 Z-line capture failure,关节六Z线捕捉故障,Joint 6 Z-line capture failure,1,ジョイント 6 Z ラインのキャプチャ失敗
+#define,Joint 1 position deviation too large,0x108611    ,1,Joint 1 position deviation too large,关节一位置偏差过大,Joint 1 position deviation too large,1,関節位置ずれが大きすぎる
+#define,Joint 2 position deviation too large,0x118611,1,Joint 2 position deviation too large,关节二位置偏差过大,Joint 2 position deviation too large,1,ジョイント 2 の位置偏差が大きすぎます
+#define,Joint 3 position deviation too large,0x128611,1,Joint 3 position deviation too large,关节三位置偏差过大,Joint 3 position deviation too large,1,ジョイント 3 位置偏差が大きすぎます
+#define,Joint 4 position deviation too large,0x138611,1,Joint 4 position deviation too large,关节四位置偏差过大,Joint 4 position deviation too large,1,関節 4 位置偏差が大きすぎます
+#define,Joint 5 position deviation too large,0x148611,1,Joint 5 position deviation too large,关节五位置偏差过大,Joint 5 position deviation too large,1,ジョイント 5 の位置偏差が大きすぎます
+#define,Joint 6 position deviation too large,0x158611,1,Joint 6 position deviation too large,关节六位置偏差过大,Joint 6 position deviation too large,1,ジョイント 6 位置偏差が大きすぎます
+#define,Joint 1 position command increments too large,0x108612,1,Joint 1 position command increments too large,关节一位置指令增量过大,Joint 1 position command increments too large,1,ジョイント 1 の位置コマンドの増分が大きすぎます
+#define,Joint 2 position command increments too large,0x118612,1,Joint 2 position command increments too large,关节二位置指令增量过大,Joint 2 position command increments too large,1,ジョイント 2 位置コマンドの増分が大きすぎます
+#define,Joint 3 position command increments too large,0x128612,1,Joint 3 position command increments too large,关节三位置指令增量过大,Joint 3 position command increments too large,1,ジョイント 3 位置コマンドの増分が大きすぎます
+#define,Joint 4 position command increments too large,0x138612,1,Joint 4 position command increments too large,关节四位置指令增量过大,Joint 4 position command increments too large,1,関節 4 位置コマンドの増分が大きすぎます
+#define,Joint 5 position command increments too large,0x148612,1,Joint 5 position command increments too large,关节五位置指令增量过大,Joint 5 position command increments too large,1,ジョイント 5 位置コマンドの増分が大きすぎます
+#define,Joint 6 position command increments too large,0x158612,1,Joint 6 position command increments too large,关节六位置指令增量过大,Joint 6 position command increments too large,1,ジョイント 6 位置コマンドの増分が大きすぎます
+#define,Joint 1 acceleration too large,0x108613,1,Joint 1 acceleration too large,关节一加速度过大,Joint 1 acceleration too large,1,過剰な関節加速度
+#define,Joint 2 acceleration too large,0x118613,1,Joint 2 acceleration too large,关节二加速度过大,Joint 2 acceleration too large,1,ジョイント 2 の加速度が大きすぎます
+#define,Joint 3 acceleration too large,0x128613,1,Joint 3 acceleration too large,关节三加速度过大,Joint 3 acceleration too large,1,関節の過度の加速
+#define,Joint 4 acceleration too large,0x138613,1,Joint 4 acceleration too large,关节四加速度过大,Joint 4 acceleration too large,1,四関節の過度の加速
+#define,Joint 5 acceleration too large,0x148613,1,Joint 5 acceleration too large,关节五加速度过大,Joint 5 acceleration too large,1,ジョイント 5 の加速度が大きすぎます
+#define,Joint 6 acceleration too large,0x158613,1,Joint 6 acceleration too large,关节六加速度过大,Joint 6 acceleration too large,1,ジョイント 6 の加速度が大きすぎます
+#define,Joint 1 position command error,0x108614,1,Joint 1 position command error,关节一位置指令过大,Joint 1 position command error,1,ジョイント 1 の位置コマンドが大きすぎます
+#define,Joint 2 position command error,0x118614,1,Joint 2 position command error,关节二位置指令过大,Joint 2 position command error,1,ジョイント 2 の位置指令が大きすぎます
+#define,Joint 3 position command error,0x128614,1,Joint 3 position command error,关节三位置指令过大,Joint 3 position command error,1,ジョイント 3 位置コマンドが大きすぎます
+#define,Joint 4 position command error,0x138614,1,Joint 4 position command error,关节四位置指令过大,Joint 4 position command error,1,ジョイント 4 位置コマンドが大きすぎます
+#define,Joint 5 position command error,0x148614,1,Joint 5 position command error,关节五位置指令过大,Joint 5 position command error,1,ジョイント 5 位置コマンドが大きすぎます
+#define,Joint 6 position command error,0x158614,1,Joint 6 position command error,关节六位置指令过大,Joint 6 position command error,1,ジョイント 6 位置コマンドが大きすぎます
+#define,Joint 1 CAN communication error,0x108615,1,Joint 1 CAN communication error,关节一CAN通讯异常,Joint 1 CAN communication error,1,Joint-CAN通信異常
+#define,Joint 2 CAN communication error,0x118615,1,Joint 2 CAN communication error,关节二CAN通信异常,Joint 2 CAN communication error,1,ジョイント2 CAN通信異常
+#define,Joint 3 CAN communication error,0x128615,1,Joint 3 CAN communication error,关节三CAN通信异常,Joint 3 CAN communication error,1,ジョイント3 CAN通信異常
+#define,Joint 4 CAN communication error,0x138615,1,Joint 4 CAN communication error,关节四CAN通信异常,Joint 4 CAN communication error,1,ジョイント4 CAN通信異常
+#define,Joint 5 CAN communication error,0x148615,1,Joint 5 CAN communication error,关节五CAN通信异常,Joint 5 CAN communication error,1,ジョイント5 CAN通信異常
+#define,Joint 6 CAN communication error,0x158615,1,Joint 6 CAN communication error,关节六CAN通信异常,Joint 6 CAN communication error,1,ジョイント6 CAN通信異常
+#define,Joint 1 servo under-voltage,0x103220,1,Joint 1 servo under-voltage,关节一伺服欠压,Joint 1 servo under-voltage,1,ジョイント 1 サーボ不足電圧
+#define,Joint 2 servo under-voltage,0x113220,1,Joint 2 servo under-voltage,关节二伺服欠压,Joint 2 servo under-voltage,1,ジョイント 2 サーボ不足電圧
+#define,Joint 3 servo under-voltage,0x123220,1,Joint 3 servo under-voltage,关节三伺服欠压,Joint 3 servo under-voltage,1,ジョイント 3 サーボ不足電圧
+#define,Joint 4 servo under-voltage,0x133220,1,Joint 4 servo under-voltage,关节四伺服欠压,Joint 4 servo under-voltage,1,ジョイント 4 サーボ不足電圧
+#define,Joint 5 servo under-voltage,0x143220,1,Joint 5 servo under-voltage,关节五伺服欠压,Joint 5 servo under-voltage,1,ジョイント 5 サーボ不足電圧
+#define,Joint 6 servo under-voltage,0x153220    ,1,Joint 6 servo under-voltage,关节六伺服欠压,Joint 6 servo under-voltage,1,ジョイント 6 サーボ不足電圧
+#define,Joint 1 servo over-voltage,0x103210,1,Joint 1 servo over-voltage,关节一伺服过压,Joint 1 servo over-voltage,1,ジョイント 1 サーボ過電圧
+#define,Joint 2 servo over-voltage,0x113210,1,Joint 2 servo over-voltage,关节二伺服过压,Joint 2 servo over-voltage,1,ジョイント 2 サーボ過電圧
+#define,Joint 3 servo over-voltage,0x123210,1,Joint 3 servo over-voltage,关节三伺服过压,Joint 3 servo over-voltage,1,ジョイント トリプル サーボ過電圧
+#define,Joint 4 servo over-voltage,0x133210,1,Joint 4 servo over-voltage,关节四伺服过压,Joint 4 servo over-voltage,1,ジョイント 4 サーボ過圧
+#define,Joint 5 servo over-voltage,0x143210,1,Joint 5 servo over-voltage,关节五伺服过压,Joint 5 servo over-voltage,1,ジョイント 5 サーボ過電圧
+#define,Joint 6 servo over-voltage,0x153210,1,Joint 6 servo over-voltage,关节六伺服过压,Joint 6 servo over-voltage,1,ジョイント 6 サーボ過電圧
+#define,Joint 1 servo over-temperature,0x104310,1,Joint 1 servo over-temperature,关节一伺服过温,Joint 1 servo over-temperature,1,ジョイント 1 サーボ過熱
+#define,Joint 2 servo over-temperature,0x114310,1,Joint 2 servo over-temperature,关节二伺服过温,Joint 2 servo over-temperature,1,ジョイント 2 サーボ過熱
+#define,Joint 3 servo over-temperature,0x124310,1,Joint 3 servo over-temperature,关节三伺服过温,Joint 3 servo over-temperature,1,ジョイント 3 サーボ過熱
+#define,Joint 4 servo over-temperature,0x134310,1,Joint 4 servo over-temperature,关节四伺服过温,Joint 4 servo over-temperature,1,ジョイント 4 サーボ過熱
+#define,Joint 5 servo over-temperature,0x144310,1,Joint 5 servo over-temperature,关节五伺服过温,Joint 5 servo over-temperature,1,ジョイント 5 サーボ過熱
+#define,Joint 6 servo over-temperature,0x154310,1,Joint 6 servo over-temperature,关节六伺服过温,Joint 6 servo over-temperature,1,ジョイント 6 サーボ過熱
+#define,Joint 1 module overload (I2T),0x102350,1,Joint 1 module overload (I2T),关节一模块过载（I2T）,Joint 1 module overload (I2T),1,ジョイント 1 モジュール過負荷 (I2T)
+#define,Joint 2 module overload (I2T),0x112350,1,Joint 2 module overload (I2T),关节二模块过载（I2T）,Joint 2 module overload (I2T),1,ジョイント 2 モジュール過負荷 (I2T)
+#define,Joint 3 module overload (I2T),0x122350,1,Joint 3 module overload (I2T),关节三模块过载（I2T）,Joint 3 module overload (I2T),1,ジョイント 3 モジュール過負荷 (I2T)
+#define,Joint 4 module overload (I2T),0x132350,1,Joint 4 module overload (I2T),关节四模块过载（I2T）,Joint 4 module overload (I2T),1,ジョイント 4 モジュール過負荷 (I2T)
+#define,Joint 5 module overload (I2T),0x142350,1,Joint 5 module overload (I2T),关节五模块过载（I2T）,Joint 5 module overload (I2T),1,ジョイント 5 モジュール過負荷 (I2T)
+#define,Joint 6 module overload (I2T),0x152350,1,Joint 6 module overload (I2T),关节六模块过载（I2T）,Joint 6 module overload (I2T),1,ジョイント 6 モジュール過負荷 (I2T)
+#define,Joint 1 servo over-power,0x105480,1,Joint 1 servo over-power,关节一伺服过功率,Joint 1 servo over-power,1,ジョイント1サーボオーバーパワー
+#define,Joint 2 servo over-power,0x115480,1,Joint 2 servo over-power,关节二伺服过功率,Joint 2 servo over-power,1,ジョイント2サーボオーバーパワー
+#define,Joint 3 servo over-power,0x125480,1,Joint 3 servo over-power,关节三伺服过功率,Joint 3 servo over-power,1,ジョイント 3 サーボ オーバーパワー
+#define,Joint 4 servo over-power,0x135480,1,Joint 4 servo over-power,关节四伺服过功率,Joint 4 servo over-power,1,ジョイント フォー サーボ オーバーパワー
+#define,Joint 5 servo over-power,0x145480,1,Joint 5 servo over-power,关节五伺服过功率,Joint 5 servo over-power,1,ジョイント 5 サーボ オーバーパワー
+#define,Joint 6 servo over-power,0x155480,1,Joint 6 servo over-power,关节六伺服过功率,Joint 6 servo over-power,1,ジョイント6サーボオーバーパワー
+#define,Joint 1 encoder zero calibration failure,0x103380,1,Joint 1 encoder zero calibration failure,关节一编码器校零失败,Joint 1 encoder zero calibration failure,1,ジョイント 1 エンコーダのゼロ校正に失敗しました
+#define,Joint 2 encoder zero calibration failure,0x113380,1,Joint 2 encoder zero calibration failure,关节二编码器校零失败,Joint 2 encoder zero calibration failure,1,ジョイント 2 エンコーダのゼロ校正に失敗しました
+#define,Joint 3 encoder zero calibration failure ,0x123380,1,Joint 3 encoder zero calibration failure,关节三编码器校零失败,Joint 3 encoder zero calibration failure,1,ジョイント 3 エンコーダのゼロ校正に失敗しました
+#define,Joint 4 encoder zero calibration failure,0x133380,1,Joint 4 encoder zero calibration failure,关节四编码器校零失败,Joint 4 encoder zero calibration failure,1,ジョイント 4 エンコーダのゼロ校正に失敗しました
+#define,Joint 5 encoder zero calibration failure,0x143380,1,Joint 5 encoder zero calibration failure,关节五编码器校零失败,Joint 5 encoder zero calibration failure,1,ジョイント 5 エンコーダのゼロ校正に失敗しました
+#define,Joint 6 encoder zero calibration failure,0x153380,1,Joint 6 encoder zero calibration failure,关节六编码器校零失败,Joint 6 encoder zero calibration failure,1,ジョイント 6 エンコーダのゼロ校正に失敗しました
+#define,Joint 1 output phase loss,0x103381,1,Joint 1 output phase loss,关节一输出缺相,Joint 1 output phase loss,1,ジョイント 1 出力欠相
+#define,Joint 2 output phase loss,0x113381,1,Joint 2 output phase loss,关节二输出缺相,Joint 2 output phase loss,1,ジョイント 2 出力欠相
+#define,Joint 3 output phase loss,0x123381,1,Joint 3 output phase loss,关节三输出缺相,Joint 3 output phase loss,1,ジョイント 3 出力欠相
+#define,Joint 4 output phase loss,0x133381,1,Joint 4 output phase loss,关节四输出缺相,Joint 4 output phase loss,1,ジョイント 4 出力欠相
+#define,Joint 5 output phase loss,0x143381,1,Joint 5 output phase loss,关节五输出缺相,Joint 5 output phase loss,1,ジョイント 5 出力欠相
+#define,Joint 6 output phase loss,0x153381,1,Joint 6 output phase loss,关节六输出缺相,Joint 6 output phase loss,1,ジョイント 6 出力欠相
+#define,Joint 1 input phase loss,0x103130,1,Joint 1 input phase loss,关节一输入缺相,Joint 1 input phase loss,1,ジョイント入力欠相
+#define,Joint 2 input phase loss,0x113130,1,Joint 2 input phase loss,关节二输入缺相,Joint 2 input phase loss,1,ジョイント 2 入力位相損失
+#define,Joint 3 input phase loss,0x123130,1,Joint 3 input phase loss,关节三输入缺相,Joint 3 input phase loss,1,ジョイント 3 入力位相損失
+#define,Joint 4 input phase loss,0x133130,1,Joint 4 input phase loss,关节四输入缺相,Joint 4 input phase loss,1,ジョイント 4 入力欠相
+#define,Joint 5 input phase loss,0x143130,1,Joint 5 input phase loss,关节五输入缺相,Joint 5 input phase loss,1,ジョイント 5 入力位相損失
+#define,Joint 6 input phase loss,0x153130,1,Joint 6 input phase loss,关节六输入缺相,Joint 6 input phase loss,1,ジョイント 6 入力位相損失
+#define,Joint 1 internal connection error,0x105441,1,Joint 1 internal connection error,关节一内部连接错误,Joint 1 internal connection error,1,ジョイント 1 内部接続エラー
+#define,Joint 2 internal connection error,0x115441,1,Joint 2 internal connection error,关节二内部连接错误,Joint 2 internal connection error,1,ジョイント 2 内部接続エラー
+#define,Joint 3 internal connection error,0x125441,1,Joint 3 internal connection error,关节三内部连接错误,Joint 3 internal connection error,1,ジョイント 3 内部接続エラー
+#define,Joint 4 internal connection error,0x135441,1,Joint 4 internal connection error,关节四内部连接错误,Joint 4 internal connection error,1,ジョイント 4 内部接続エラー
+#define,Joint 5 internal connection error,0x145441,1,Joint 5 internal connection error,关节五内部连接错误,Joint 5 internal connection error,1,ジョイントファイブ内部接続エラー
+#define,Joint 6 internal connection error,0x155441,1,Joint 6 internal connection error,关节六内部连接错误,Joint 6 internal connection error,1,ジョイント6内部接続エラー
+#define,Joint 1 internal parameter error,0x105280,1,Joint 1 internal parameter error,关节一内部参数错误,Joint 1 internal parameter error,1,ジョイント 1 内部パラメータ エラー
+#define,Joint 2 internal parameter error,0x115280,1,Joint 2 internal parameter error,关节二内部参数错误,Joint 2 internal parameter error,1,ジョイント 2 内部パラメータ エラー
+#define,Joint 3 internal parameter error,0x125280,1,Joint 3 internal parameter error,关节三内部参数错误,Joint 3 internal parameter error,1,ジョイント 3 内部パラメータ エラー
+#define,Joint 4 internal parameter error,0x135280,1,Joint 4 internal parameter error,关节四内部参数错误,Joint 4 internal parameter error,1,ジョイント 4 内部パラメータ エラー
+#define,Joint 5 internal parameter error,0x145280,1,Joint 5 internal parameter error,关节五内部参数错误,Joint 5 internal parameter error,1,ジョイント 5 内部パラメータ エラー
+#define,Joint 6 internal parameter error,0x155280,1,Joint 6 internal parameter error,关节六内部参数错误,Joint 6 internal parameter error,1,ジョイント 6 内部パラメータ エラー
+#define,Joint 1 PID overflow ,0x105281,1,Joint 1 PID overflow,关节一PID运算溢出,Joint 1 PID overflow,1,ジョイント PID 計算オーバーフロー
+#define,Joint 2 PID overflow,0x115281,1,Joint 2 PID overflow,关节二PID运算溢出,Joint 2 PID overflow,1,ジョイント 2 PID 計算オーバーフロー
+#define,Joint 3 PID overflow,0x125281,1,Joint 3 PID overflow,关节三PID运算溢出,Joint 3 PID overflow,1,ジョイント 3 PID 演算オーバーフロー
+#define,Joint 4 PID overflow,0x135281,1,Joint 4 PID overflow,关节四PID运算溢出,Joint 4 PID overflow,1,ジョイント 4 PID 計算オーバーフロー
+#define,Joint 5 PID calculation overflow,0x145281,1,Joint 5 PID calculation overflow,关节五PID运算溢出,Joint 5 PID calculation overflow,1,ジョイント 5 PID 計算オーバーフロー
+#define,Joint 6 PID overflow,0x155281,1,Joint 6 PID overflow,关节六PID运算溢出,Joint 6 PID overflow,1,ジョイント 6 PID 計算オーバーフロー
+#define,Joint 1 model selection error ,0x105211,1,Joint 1 model selection error,关节一型号选择错误,Joint 1 model selection error,1,ジョイント1機種選定ミス
+#define,Joint 2 model selection error,0x115211,1,Joint 2 model selection error,关节二型号选择错误,Joint 2 model selection error,1,ジョイント 2 のモデル選択エラー
+#define,Joint 3 model selection error,0x125211,1,Joint 3 model selection error,关节三型号选择错误,Joint 3 model selection error,1,ジョイント3機種選定ミス
+#define,Joint 4 model selection error,0x135211,1,Joint 4 model selection error,关节四型号选择错误,Joint 4 model selection error,1,ジョイント 4 モデルの選択エラー
+#define,Joint 5 model selection error,0x145211,1,Joint 5 model selection error,关节五型号选择错误,Joint 5 model selection error,1,ジョイントファイブの機種選定ミス
+#define,Joint 6 model selection error,0x155211,1,Joint 6 model selection error,关节六型号选择错误,Joint 6 model selection error,1,ジョイント6機種選択ミス
+#define,Joint 1 motor over-temperature,0x104210,1,Joint 1 motor over-temperature,关节一电机过温,Joint 1 motor over-temperature,1,ジョイントモーターの過熱
+#define,Joint 2 motor over-temperature,0x114210,1,Joint 2 motor over-temperature,关节二电机过温,Joint 2 motor over-temperature,1,ジョイント 2 モーター過熱
+#define,Joint 3 motor over-temperature,0x124210,1,Joint 3 motor over-temperature,关节三电机过温,Joint 3 motor over-temperature,1,ジョイント 3 モーターの過熱
+#define,Joint 4 motor over-temperature,0x134210,1,Joint 4 motor over-temperature,关节四电机过温,Joint 4 motor over-temperature,1,ジョイント 4 モーター過熱
+#define,Joint 5 motor over-temperature,0x144210,1,Joint 5 motor over-temperature,关节五电机过温,Joint 5 motor over-temperature,1,ジョイント 5 モーター過熱
+#define,Joint 6 motor over-temperature,0x154210,1,Joint 6 motor over-temperature,关节六电机过温,Joint 6 motor over-temperature,1,ジョイント 6 モーター過熱
+#define,Joint 1 parameter settings do not match the hardware power ,0x105210,1,Joint 1 parameter settings do not match the hardware power,关节一参数设置与硬件功率不匹配,Joint 1 parameter settings do not match the hardware power,1,ジョイント 1 のパラメータ設定がハードウェアのパワーと一致しません
+#define,Joint 2 parameter settings do not match the hardware power,0x115210,1,Joint 2 parameter settings do not match the hardware power,关节二参数设置与硬件功率不匹配,Joint 2 parameter settings do not match the hardware power,1,ジョイント 2 のパラメータ設定がハードウェアの電力と一致しません
+#define,Joint 3 parameter settings do not match the hardware power,0x125210,1,Joint 3 parameter settings do not match the hardware power,关节三参数设置与硬件功率不匹配,Joint 3 parameter settings do not match the hardware power,1,ジョイント 3 パラメーターの設定がハードウェアの電力と一致しません
+#define,Joint 4 parameter settings do not match the hardware power,0x135210,1,Joint 4 parameter settings do not match the hardware power,关节四参数设置与硬件功率不匹配,Joint 4 parameter settings do not match the hardware power,1,ジョイント 4 パラメータの設定がハードウェアのパワーと一致しません
+#define,Joint 5 parameter settings do not match the hardware power,0x145210,1,Joint 5 parameter settings do not match the hardware power,关节五参数设置与硬件功率不匹配,Joint 5 parameter settings do not match the hardware power,1,ジョイント 5 パラメータの設定がハードウェアのパワーと一致しません
+#define,Joint 6 parameter settings do not match the hardware power,0x155210,1,Joint 6 parameter settings do not match the hardware power,关节六参数设置与硬件功率不匹配,Joint 6 parameter settings do not match the hardware power,1,ジョイント 6 パラメーターの設定がハードウェアの電力と一致しません
+#define,Joint 1 EEPROM error,0x105282,1,Joint 1 EEPROM error,关节一EEPROM错误,Joint 1 EEPROM error,1,ジョイントワンEEPROMエラー
+#define,Joint 2 EEPROM error,0x115282,1,Joint 2 EEPROM error,关节二EEPROM错误,Joint 2 EEPROM error,1,ジョイント 2 EEPROM エラー
+#define,Joint 3 EEPROM error,0x125282,1,Joint 3 EEPROM error,关节三EEPROM错误,Joint 3 EEPROM error,1,ジョイント 3 EEPROM エラー
+#define,Joint 4 EEPROM error,0x135282,1,Joint 4 EEPROM error,关节四EEPROM错误,Joint 4 EEPROM error,1,ジョイント クワッド EEPROM エラー
+#define,Joint 5 EEPROM error,0x145282,1,Joint 5 EEPROM error,关节五EEPROM错误,Joint 5 EEPROM error,1,ジョイント 5 EEPROM エラー
+#define,Joint 6 EEPROM error,0x155282,1,Joint 6 EEPROM error,关节六EEPROM错误,Joint 6 EEPROM error,1,ジョイント 6 EEPROM エラー
+#define,Joint 1 enabling failure,0x105283,1,Joint 1 enabling failure,关节一上使能失败,Joint 1 enabling failure,1,ジョイント 1 を有効にできませんでした
+#define,Joint 2 enabling failure,0x115283,1,Joint 2 enabling failure,关节二上使能失败,Joint 2 enabling failure,1,ジョイント 2 を有効にできませんでした
+#define,Joint 3 enabling failure,0x125283,1,Joint 3 enabling failure,关节三上使能失败,Joint 3 enabling failure,1,ジョイント 3 での有効化に失敗しました
+#define,Joint 4 enabling failure,0x135283,1,Joint 4 enabling failure,关节四上使能失败,Joint 4 enabling failure,1,ジョイント 4 を有効にできませんでした
+#define,Joint 5 enabling failure,0x145283,1,Joint 5 enabling failure,关节五上使能失败,Joint 5 enabling failure,1,ジョイント 5 での有効化に失敗しました
+#define,Joint 6 enabling failure,0x155283,1,Joint 6 enabling failure,关节六上使能失败,Joint 6 enabling failure,1,ジョイント 6 での有効化に失敗しました
+#define,Joint 1 encoder overheating,0x106010,2,Joint 1 encoder overheating,关节一编码器温度过热,Joint 1 encoder overheating,1,ジョイント 1 のエンコーダ温度が過熱しています
+#define,Joint 2 encoder overheating,0x116010,2,Joint 2 encoder overheating,关节二编码器温度过热,Joint 2 encoder overheating,1,ジョイント 2 エンコーダーの温度が過熱しています
+#define,Joint 3 encoder overheating,0x126010,2,Joint 3 encoder overheating,关节三编码器温度过热,Joint 3 encoder overheating,1,ジョイント 3 エンコーダー温度過熱
+#define,Joint 4 encoder overheating,0x136010,2,Joint 4 encoder overheating,关节四编码器温度过热,Joint 4 encoder overheating,1,ジョイント 4 エンコーダの温度が過熱しています
+#define,Joint 5 encoder overheating,0x146010,2,Joint 5 encoder overheating,关节五编码器温度过热,Joint 5 encoder overheating,1,ジョイント 5 エンコーダー温度過熱
+#define,Joint 6 encoder overheating,0x156010,2,Joint 6 encoder overheating,关节六编码器温度过热,Joint 6 encoder overheating,1,ジョイント 6 のエンコーダー温度が過熱しています
+#define,Joint 1 motor overload (I2T),0x107180,1,Joint 1 motor overload (I2T),关节一电机过载(I2T),Joint 1 motor overload (I2T),1,関節モーター過負荷 (I2T)
+#define,Joint 2 motor overload (I2T),0x117180,1,Joint 2 motor overload (I2T),关节二电机过载(I2T),Joint 2 motor overload (I2T),1,ジョイント 2 モーター過負荷 (I2T)
+#define,Joint 3 motor overload (I2T),0x127180,1,Joint 3 motor overload (I2T),关节三电机过载(I2T),Joint 3 motor overload (I2T),1,ジョイント 3 モーター過負荷 (I2T)
+#define,Joint 4 motor overload (I2T),0x137180,1,Joint 4 motor overload (I2T),关节四电机过载(I2T),Joint 4 motor overload (I2T),1,ジョイント 4 モーター過負荷 (I2T)
+#define,Joint 5 motor overload (I2T),0x147180,1,Joint 5 motor overload (I2T),关节五电机过载(I2T),Joint 5 motor overload (I2T),1,ジョイント 5 モーター過負荷 (I2T)
+#define,Joint 6 motor overload (I2T),0x157180,1,Joint 6 motor overload (I2T),关节六电机过载(I2T),Joint 6 motor overload (I2T),1,ジョイント 6 モーター過負荷 (I2T)
+#define,Joint 1 motor contracting brake error,0x107181,1,Joint 1 motor contracting brake error,关节一电机抱闸故障,Joint 1 motor contracting brake error,1,ジョイント 1 モーター ブレーキの故障
+#define,Joint 2 motor contracting brake error,0x117181,1,Joint 2 motor contracting brake error,关节二电机抱闸故障,Joint 2 motor contracting brake error,1,ジョイント 2 モーター ブレーキの故障
+#define,Joint 3 motor contracting brake error,0x127181,1,Joint 3 motor contracting brake error,关节三电机抱闸故障,Joint 3 motor contracting brake error,1,ジョイント 3 モーター ブレーキの故障
+#define,Joint 4 motor contracting brake error,0x137181,1,Joint 4 motor contracting brake error,关节四电机抱闸故障,Joint 4 motor contracting brake error,1,ジョイント 4 モーター ブレーキの故障
+#define,Joint 5 motor contracting brake error,0x147181,1,Joint 5 motor contracting brake error,关节五电机抱闸故障,Joint 5 motor contracting brake error,1,ジョイント 5 モーター ブレーキの故障
+#define,Joint 6 motor contracting brake error,0x157181,1,Joint 6 motor contracting brake error,关节六电机抱闸故障,Joint 6 motor contracting brake error,1,ジョイント 6 モーター ブレーキの故障
+#define,Joint 1 high-frequency signal injection direction error,0x107182,1,Joint 1 high-frequency signal injection direction error,关节一高频注入反向,Joint 1 high-frequency signal injection direction error,1,ジョイント高周波注入リバース
+#define,Joint 2 high-frequency signal injection direction error,0x117182,1,Joint 2 high-frequency signal injection direction error,关节二高频注入反向,Joint 2 high-frequency signal injection direction error,1,ジョイント 2 高周波注入逆
+#define,Joint 3 high-frequency signal injection direction error,0x127182,1,Joint 3 high-frequency signal injection direction error,关节三高频注入反向,Joint 3 high-frequency signal injection direction error,1,ジョイント 3 高周波噴射逆
+#define,Joint 4 high-frequency signal injection direction error,0x137182,1,Joint 4 high-frequency signal injection direction error,关节四高频注入反向,Joint 4 high-frequency signal injection direction error,1,ジョイントフォー高周波噴射逆
+#define,Joint 5 high-frequency signal injection direction error,0x147182,1,Joint 5 high-frequency signal injection direction error,关节五高频注入反向,Joint 5 high-frequency signal injection direction error,1,ジョイントファイブ高周波噴射逆
+#define,Joint 6 high-frequency signal injection direction error,0x157182,1,Joint 6 high-frequency signal injection direction error,关节六高频注入反向,Joint 6 high-frequency signal injection direction error,1,ジョイント 6 高周波注入リバース
+#define,Joint 1 encoder internal error,0x107386,1,Joint 1 encoder internal error,关节一编码器内部错误,Joint 1 encoder internal error,1,ジョイント 1 エンコーダの内部エラー
+#define,Joint 2 encoder internal error,0x117386,1,Joint 2 encoder internal error,关节二编码器内部错误,Joint 2 encoder internal error,1,ジョイント 2 エンコーダの内部エラー
+#define,Joint 3 encoder internal error,0x127386,1,Joint 3 encoder internal error,关节三编码器内部错误,Joint 3 encoder internal error,1,ジョイント 3 エンコーダの内部エラー
+#define,Joint 4 encoder internal error,0x137386,1,Joint 4 encoder internal error,关节四编码器内部错误,Joint 4 encoder internal error,1,ジョイント 4 エンコーダの内部エラー
+#define,Joint 5 encoder internal error,0x147386,1,Joint 5 encoder internal error,关节五编码器内部错误,Joint 5 encoder internal error,1,ジョイント 5 エンコーダの内部エラー
+#define,Joint 6 encoder internal error,0x157386,1,Joint 6 encoder internal error,关节六编码器内部错误,Joint 6 encoder internal error,1,ジョイント 6 エンコーダの内部エラー
+#define,Joint 1 dynamics overrun,0x107580,1,Joint 1 dynamics overrun,关节一动力学超限,Joint 1 dynamics overrun,1,関節運動オーバーラン
+#define,Joint 2 dynamics overrun,0x117580,1,Joint 2 dynamics overrun,关节二动力学超限,Joint 2 dynamics overrun,1,関節 2 の運動限界
+#define,Joint 3 dynamics overrun,0x127580,1,Joint 3 dynamics overrun,关节三动力学超限,Joint 3 dynamics overrun,1,ジョイント トリキネティック オーバーラン
+#define,Joint 4 dynamics overrun,0x137580,1,Joint 4 dynamics overrun,关节四动力学超限,Joint 4 dynamics overrun,1,ジョイントフォーダイナミクスオーバーラン
+#define,Joint 5 dynamics overrun,0x147580,1,Joint 5 dynamics overrun,关节五动力学超限,Joint 5 dynamics overrun,1,ジョイントファイブダイナミクスオーバーラン
+#define,Joint 6 dynamics overrun,0x157580,1,Joint 6 dynamics overrun,关节六动力学超限,Joint 6 dynamics overrun,1,ジョイント 6 ダイナミクス オーバーラン
+#define,Joint 1 power supply of drive board error,0x103211,1,Joint 1 power supply of drive board error,关节一驱动板动力电源故障,Joint 1 power supply of drive board error,1,ジョイントドライブボードの電源障害
+#define,Joint 2 power supply of drive board error,0x113211,1,Joint 2 power supply of drive board error,关节二驱动板动力电源故障,Joint 2 power supply of drive board error,1,ジョイント 2 ドライブ ボードの電源障害
+#define,Joint 3 power supply of drive board error,0x123211,1,Joint 3 power supply of drive board error,关节三驱动板动力电源故障,Joint 3 power supply of drive board error,1,ジョイント 3 ドライブ ボードの電源障害
+#define,Joint 4 power supply of drive board error,0x133211,1,Joint 4 power supply of drive board error,关节四驱动板动力电源故障,Joint 4 power supply of drive board error,1,ジョイント 4 ドライブ ボードの電源障害
+#define,Joint 5 power supply of drive board error,0x143211,1,Joint 5 power supply of drive board error,关节五驱动板动力电源故障,Joint 5 power supply of drive board error,1,ジョイント 5 ドライブ ボードの電源障害
+#define,Joint 6 power supply of drive board error,0x153211,1,Joint 6 power supply of drive board error,关节六驱动板动力电源故障,Joint 6 power supply of drive board error,1,ジョイント 6 ドライブ ボードの電源障害
+#define,Joint 1 encoder magnetic signal error,0x107388    ,1,Joint 1 encoder magnetic signal error,关节一编码器磁信号异常,Joint 1 encoder magnetic signal error,1,ジョイント1エンコーダ磁気信号異常
+#define,Joint 2 encoder magnetic signal error,0x117388,1,Joint 2 encoder magnetic signal error,关节二编码器磁信号异常,Joint 2 encoder magnetic signal error,1,ジョイントの 2 番目のエンコーダの磁気信号が異常です
+#define,Joint 3 encoder magnetic signal error,0x127388,1,Joint 3 encoder magnetic signal error,关节三编码器磁信号异常,Joint 3 encoder magnetic signal error,1,ジョイント 3 エンコーダの磁気信号が異常です
+#define,Joint 4 encoder magnetic signal error,0x137388,1,Joint 4 encoder magnetic signal error,关节四编码器磁信号异常,Joint 4 encoder magnetic signal error,1,関節の4つのエンコーダーの磁気信号が異常です
+#define,Joint 5 encoder magnetic signal error,0x147388,1,Joint 5 encoder magnetic signal error,关节五编码器磁信号异常,Joint 5 encoder magnetic signal error,1,ジョイント 5 エンコーダの磁気信号が異常です
+#define,Joint 6 encoder magnetic signal error,0x157388,1,Joint 6 encoder magnetic signal error,关节六编码器磁信号异常,Joint 6 encoder magnetic signal error,1,ジョイント 6 エンコーダの磁気信号が異常です
+#define,Joint 1 position deviation,0x108000    ,2,Joint 1 position deviation,关节一位置偏离,Joint 1 position deviation,1,ジョイント 1 位置偏差 - 保護停止
+#define,Joint 2 position deviation,0x118000,2,Joint 2 position deviation,关节二位置偏离,Joint 2 position deviation,1,ジョイント 2 位置偏差 - 保護停止
+#define,Joint 3 position deviation,0x128000,2,Joint 3 position deviation,关节三位置偏离,Joint 3 position deviation,1,ジョイント 3 位置偏差 - 保護停止
+#define,Joint 4 position deviation,0x138000,2,Joint 4 position deviation,关节四位置偏离,Joint 4 position deviation,1,ジョイント 4 位置偏差 - 保護停止
+#define,Joint 5 position deviation,0x148000,2,Joint 5 position deviation,关节五位置偏离,Joint 5 position deviation,1,ジョイント 5 位置偏差 - 保護停止
+#define,Joint 6 position deviation,0x158000,2,Joint 6 position deviation,关节六位置偏离,Joint 6 position deviation,1,ジョイント 6 位置偏差 - 保護停止
+#define,Joint 1 position deviation,0x108001   ,2,Joint 1 position deviation,关节一位置偏离报警,Joint 1 position deviation,0,関節位置ずれ警報
+#define,Joint 2 position deviation,0x118001,2,Joint 2 position deviation,关节二位置偏离报警,Joint 2 position deviation,0,関節2位置偏差警報
+#define,Joint 3 position deviation,0x128001,2,Joint 3 position deviation,关节三位置偏离报警,Joint 3 position deviation,0,関節三点偏差警報
+#define,Joint 4 position deviation,0x138001,2,Joint 4 position deviation,关节四位置偏离报警,Joint 4 position deviation,0,関節4点偏差警報
+#define,Joint 5 position deviation,0x148001,2,Joint 5 position deviation,关节五位置偏离报警,Joint 5 position deviation,0,関節5点偏差警報
+#define,Joint 6 position deviation,0x158001,2,Joint 6 position deviation,关节六位置偏离报警,Joint 6 position deviation,0,ジョイント6ポジション偏差アラーム
+#define,Joint 1 parameter locked,0x105201,2,Joint 1 parameter locked,关节一参数未解锁,Joint 1 parameter locked,1,関節一パラメータがロック解除されませんでした
+#define,Joint 2 parameter locked,0x115201,2,Joint 2 parameter locked,关节二参数未解锁,Joint 2 parameter locked,1,関節二パラメータがロック解除されませんでした
+#define,Joint 3 parameter locked,0x125201,2,Joint 3 parameter locked,关节三参数未解锁,Joint 3 parameter locked,1,関節三パラメータがロック解除されませんでした
+#define,Joint 4 parameter locked,0x135201,2,Joint 4 parameter locked,关节四参数未解锁,Joint 4 parameter locked,1,関節四パラメータがロック解除されませんでした
+#define,Joint 5 parameter locked,0x145201,2,Joint 5 parameter locked,关节五参数未解锁,Joint 5 parameter locked,1,関節五パラメータがロック解除されませんでした
+#define,Joint 6 parameter locked,0x155201,2,Joint 6 parameter locked,关节六参数未解锁,Joint 6 parameter locked,1,関節六パラメータがロック解除されませんでした
+#define,Joint 1 zero calibration and DH parameter conflict,0x105202,1,Joint 1 zero calibration and DH parameter conflict,关节一校零与DH参数冲突,Joint 1 zero calibration and DH parameter conflict,1,関節一校正ゼロとDHパラメータの衝突
+#define,Joint 2 zero calibration and DH parameter conflict,0x115202,1,Joint 2 zero calibration and DH parameter conflict,关节二校零与DH参数冲突,Joint 2 zero calibration and DH parameter conflict,1,関節二校正ゼロとDHパラメータの衝突
+#define,Joint 3 zero calibration and DH parameter conflict,0x125202,1,Joint 3 zero calibration and DH parameter conflict,关节三校零与DH参数冲突,Joint 3 zero calibration and DH parameter conflict,1,関節三校正ゼロとDHパラメータの衝突
+#define,Joint 4 zero calibration and DH parameter conflict,0x135202,1,Joint 4 zero calibration and DH parameter conflict,关节四校零与DH参数冲突,Joint 4 zero calibration and DH parameter conflict,1,関節四校正ゼロとDHパラメータの衝突
+#define,Joint 5 zero calibration and DH parameter conflict,0x145202,1,Joint 5 zero calibration and DH parameter conflict,关节五校零与DH参数冲突,Joint 5 zero calibration and DH parameter conflict,1,関節五校正ゼロとDHパラメータの衝突
+#define,Joint 6 zero calibration and DH parameter conflict,0x155202,1,Joint 6 zero calibration and DH parameter conflict,关节六校零与DH参数冲突,Joint 6 zero calibration and DH parameter conflict,1,関節六校正ゼロとDHパラメータの衝突
+#define,Joint 1 temperature sensor communication error ,0x108616,1,Joint 1 temperature sensor communication error,关节一温度传感器通信异常,Joint 1 temperature sensor communication error,1,関節一温度センサ通信異常
+#define,Joint 2 temperature sensor communication error,0x118616,1,Joint 2 temperature sensor communication error,关节二温度传感器通信异常,Joint 2 temperature sensor communication error,1,関節二温度センサ通信異常
+#define,Joint 3 temperature sensor communication error,0x128616,1,Joint 3 temperature sensor communication error,关节三温度传感器通信异常,Joint 3 temperature sensor communication error,1,関節三温度センサ通信異常
+#define,Joint 4 temperature sensor communication error,0x138616,1,Joint 4 temperature sensor communication error,关节四温度传感器通信异常,Joint 4 temperature sensor communication error,1,関節四温度センサ通信異常
+#define,Joint 5 temperature sensor communication error,0x148616,1,Joint 5 temperature sensor communication error,关节五温度传感器通信异常,Joint 5 temperature sensor communication error,1,関節五温度センサ通信異常
+#define,Joint 6 temperature sensor communication error,0x158616,1,Joint 6 temperature sensor communication error,关节六温度传感器通信异常,Joint 6 temperature sensor communication error,1,関節六温度センサ通信異常
+#define,Inconsistent serial bus parameters of extended IO RTU ,0x201104,2,Inconsistent serial bus parameters of extended IO RTU,扩展IO RTU 串行总线参数不一致,Inconsistent serial bus parameters of extended IO RTU,1,拡張 IO RTU シリアル バス パラメータの不一致
+#define,Failed to create Modbus RTU connection during extension IO initialization ,0x201102,1,Failed to create Modbus RTU connection during extension IO initialization,扩展IO初始化时创建Modbus RTU连接失败,Failed to create Modbus RTU connection during extension IO initialization,1, 拡張 IO 初期化中に Modbus RTU 接続の作成に失敗しました
+#define,Failed to create Modbus TCP connection during extension IO initialization,0x201202,1,Failed to create Modbus TCP connection during extension IO initialization,扩展IO初始化时创建Modbus TCP连接失败,Failed to create Modbus TCP connection during extension IO initialization,1,拡張 IO 初期化中に Modbus TCP 接続の作成に失敗しました
+#define,Unknown error during extended IO initialization,0x201304,1,Unknown error during initialization,扩展IO初始化时未知错误,Unknown error during initialization,1,拡張 IO 初期化中の不明なエラー
+#define, Modbus RTU misconfigured during extended IO initialization,0x201101,1,Extended IO initialization failure: Modbus RTU communication parameters do not match, 扩展IO初始化时Modbus RTU配置错误,Extended IO initialization failure: Modbus RTU communication parameters do not match,1,拡張 IO 初期化中の Modbus RTU 構成エラー
+#define,Modbus TCP misconfigured during extended IO initialization,0x201201,1,Extended IO initialization failure: Modbus RTU communication parameters format error,扩展IO初始化时Modbus TCP配置错误,Extended IO initialization failure: Modbus RTU communication parameters format error,1, 拡張 IO 初期化中の Modbus TCP 構成エラー
+#define,Modbus RTU is disconnected during extended IO operation. ,0x202103,1,Extended IO operation failure: Modbus RTU disconnection,扩展IO运行时Modbus RTU节点掉线,Extended IO operation failure: Modbus RTU disconnection,1,拡張 IO の実行中に Modbus RTU ノードがオフラインになる
+#define,Modbus TCP is disconnected during extended IO operation.,0x202102,1,Extended IO operation failure: Modbus TCP disconnection,扩展IO运行时Modbus TCP节点掉线,Extended IO operation failure: Modbus TCP disconnection,1,拡張 IO の実行中に Modbus TCP ノードがオフラインになる
+#define,Torque sensor communication initialization failure,0x3F0001,1,Torque sensor communication initialization failure,力矩传感器通讯初始化失败,Torque sensor communication initialization failure,1,トルクセンサー通信の初期化に失敗しました
+#define,Failed to receive torque sensor data,0x3F1001,1,Failed to receive torque sensor data,接收力矩传感器数据失败,Failed to receive torque sensor data,1, トルクセンサーデータの受信に失敗しました
+#define,Received torque sensor data format error,0x3F1002,1,Received torque sensor data format error,接收力矩传感器数据格式错误,Received torque sensor data format error,1,受信トルクセンサデータフォーマットエラー
+#define,PDU temperature anomaly ,0x304281,2,PDU temperature anomaly,PDU温度异常,PDU temperature anomaly,1,異常な PDU 温度
+#define,Braking resistance over-temperature,0x304282,1,Braking resistance over-temperature,制动电阻过温,Braking resistance over-temperature,1,ブレーキ抵抗器の過熱
+#define,5V power voltage error,0x303281,2,5V error （Fluctuation range of supply voltage）,5V供电电压异常,5V error （Fluctuation range of supply voltage）,1,5V電源電圧異常
+#define, 12V power voltage error,0x303282,2,12V error （Fluctuation range of supply voltage）, 12V供电电压异常,12V error （Fluctuation range of supply voltage）,1, 12V電源電圧異常
+#define,24V power voltage error,0x303283,1,24V error （Fluctuation range of supply voltage）,24V供电电压异常,24V error （Fluctuation range of supply voltage）,1,24V電源電圧異常
+#define,220V power voltage error,0x303181,2,220V power voltage error,220V供电电压异常,220V power voltage error,1,220V電源電圧異常
+#define,Main power supply relay error,0x303182,2,Main power supply relay error,主供电继电器异常,Main power supply relay error,1,主電源リレー異常
+#define,Robot output power voltage error,0x303381,2,Robot voltage or voltage configuration error,本体输出供电电压异常,Robot voltage or voltage configuration error,1,本体出力電源電圧異常
+#define,PSCB relay error,0x303387,2,PSCB relay error,PSCB 继电器异常,PSCB relay error,1,PSCBリレー異常
+#define,External IO power supply current error,0x302384,2,External IO power supply current error（ 2.3A),用户IO供电电流异常,External IO power supply current error（ 2.3A),1,ユーザーIO電源電流異常
+#define,IPC current error,0x302385,2,IPC current error （IPC current over 1.5A is considered a short-circuit fault in the IPC）,IPC电流异常,IPC current error （IPC current over 1.5A is considered a short-circuit fault in the IPC）,1,IPC電流異常
+#define,Fan current error,0x302380,2,Fan current error,风扇电流异常,Fan current error,1,ファン電流異常
+#define,Level 1 alarm: robot current error,0x302381,2,"Robot output power supply current error, level 1 warning: 25A Robot current consumption error",本体电流异常一级报警,"Robot output power supply current error, level 1 warning: 25A Robot current consumption error",1,ボディ電流異常レベル1警報
+#define,Level 2 alarm: robot current error,0x302382,2,"Robot output power supply current error, level 2 warning: 31.25A ",本体电流异常二级报警,"Robot output power supply current error, level 2 warning: 31.25A ",1,体内電流異常二次警報
+#define,Level 3 alarm: robot current error,0x302383,2,"Robot output power supply current error, level 3 warning: 37.25A",本体电流异常三级报警,"Robot output power supply current error, level 3 warning: 37.25A",1,ボディ電流異常3段階警報
+#define,Robot power error,0x302391,2,Robot power error,本体功率异常,Robot power error,1,異常な身体能力
+#define,Robot end drag over speed,0x309081,2,Dragging TCP speed over limit,机器人末端拖拽超速,Dragging TCP speed over limit,1,ロボットの端が引きずられてスピードを出しすぎている
+#define,Emergency stop triggered ,0x309082,2,Emergency stop,急停触发,Emergency stop,1,非常停止トリガー
+#define,CAN communication of remote stick interruption ,0x308181,2,CAN communication of remote stick interruption,手柄CAN通信中断,CAN communication of remote stick interruption,1,CAN 通信の中断を処理する
+#define,Control cabinet CAN communication interruption,0x308182,2,Control cabinet CAN communication interruption,控制器CAN通信中断,Control cabinet CAN communication interruption,1,コントローラの CAN 通信が中断されました
+#define,Robot CAN communication interruption,0x308183,2,Robot CAN communication interruption,本体CAN通信中断,Robot CAN communication interruption,1,本体CAN通信途絶
+#define,TIO CAN communication interruption,0x308184,2,TIO CAN communication interruption,TIO CAN通信中断,TIO CAN communication interruption,1,TIO CAN 通信が中断されました
+#define,CAN communication timeout,0x308185,2,CAN communication timeout,等待CAN通信正常超时,CAN communication timeout,1,CAN通信が正常にタイムアウトするのを待っています
+#define,Inconsistent remote stick emergency stop signal,0x305081,2,Inconsistent remote stick emergency stop signal,手柄急停信号不一致,Inconsistent remote stick emergency stop signal,1,ハンドルの非常停止信号が不一致です
+#define,Inconsistent user’s emergency stop signal,0x305082,2,Inconsistent user’s emergency stop signal,用户急停信号输入不一致,Inconsistent user’s emergency stop signal,1,ユーザー非常停止信号入力の不一致
+#define,Inconsistent protective stop signal,0x305083,2,Inconsistent protective stop signal,保护性停止信号输入不一致,Inconsistent protective stop signal,1,保護停止信号の不一致入力
+#define,SCB relay error,0x305084,2,SCB relay error,SCB继电器异常,SCB relay error,1,SCBリレー異常
+#define,Braking resistance over-temperature,0x305085,2,Braking resistance over-temperature,制动电阻过温,Braking resistance over-temperature,1,ブレーキ抵抗過熱
+#define,Remote stick enabling input error,0x305086,2,Remote stick enabling input error,手柄使能输入异常,Remote stick enabling input error,1,ハンドルイネーブル入力異常
+#define,Additional emergency stop input error,0x305087,2,Additional emergency stop input error,附加急停输入异常,Additional emergency stop input error,1,追加非常停止入力異常
+#define,Additional protective stop input,0x305088,2,Additional protective stop input,附加保护性停止输入异常,Additional protective stop input,1,追加保護停止入力例外
+#define,Protective stop reset input error,0x305089,2,Protective stop reset input error,保护性停止复位输入异常,Protective stop reset input error,1,保護停止リセット入力異常
+#define,Reduced mode input error ,0x30508A,2,Reduced mode input error,缩减模式输入异常,Reduced mode input error,1,縮小モード入力例外
+#define,3-Position enable input error ,0x30508B,2,3-Position enable input error,三位置使能输入异常,3-Position enable input error,1,3ポジションイネーブル入力例外
+#define,Turn off collision detection signal input abnormalities,0x305090,2,Turn off collision detection signal input abnormalities,关闭碰撞检测信号输入异常,Turn off collision detection signal input abnormalities,1,衝突検知信号入力異常をオフにする
+#define,Collision sensitivity LV1 signal input is abnormal,0x305091,2,Collision sensitivity LV1 signal input is abnormal,碰撞灵敏度LV1信号输入异常,Collision sensitivity LV1 signal input is abnormal,1,衝突感度LV1信号入力が異常です
+#define,Collision sensitivity LV2 signal input is abnormal,0x305092,2,Collision sensitivity LV2 signal input is abnormal,碰撞灵敏度LV2信号输入异常,Collision sensitivity LV2 signal input is abnormal,1,衝突感度LV2信号入力が異常です
+#define,Collision sensitivity LV3 signal input is abnormal,0x305093,2,Collision sensitivity LV3 signal input is abnormal,碰撞灵敏度LV3信号输入异常,Collision sensitivity LV3 signal input is abnormal,1,衝突感度LV3信号入力が異常です
+#define,Collision sensitivity LV4 signal input is abnormal,0x305094,2,Collision sensitivity LV4 signal input is abnormal,碰撞灵敏度LV4信号输入异常,Collision sensitivity LV4 signal input is abnormal,1,衝突感度LV4信号入力が異常です
+#define,Collision sensitivity LV5 signal input is abnormal,0x305095,2,Collision sensitivity LV5 signal input is abnormal,碰撞灵敏度LV5信号输入异常,Collision sensitivity LV5 signal input is abnormal,1,衝突感度LV5信号入力が異常です
+#define,The collision sensitivity is extremely low and the signal input is abnormal,0x305097,2,The collision sensitivity is extremely low and the signal input is abnormal,碰撞灵敏度极低信号输入异常,,1,衝突感度が極端に低く、信号入力が異常です
+#define,Abnormalities in the safety signals exist refusing to power up,0x303184,2,There was an abnormality in the safe digital input signal， and the safety control board detected that the abnormal fault had not been cleared and refused the request to repower the robot.,安全信号异常拒绝上电,There was an abnormality in the safe digital input signal， and the safety control board detected that the abnormal fault had not been cleared and refused the request to repower the robot.,1,安全信号異常電源投入拒否
+#define,Robot power alarm threshold,0x309083,1,Robot power alarm threshold,机器人整机功率报警阈值,Robot power alarm threshold,1,ロボット マシンの電源アラームしきい値
+#define,Other Errors,0x0FFFFE,1,Other Errors,其它错误,Other Errors,1,その他のエラー
+#define,Unknown Error,0x0FFFFF,1,Unknown Error,未知错误,Unknown Error,1,未知の間違い
+#define,System emergency stop triggered,0x10F0000,0,System emergency stop triggered,系统急停触发,System emergency stop triggered,0,システム非常停止トリガー
+#define,System emergency stop reset,0x10F0001,0,System emergency stop reset,系统急停复位,System emergency stop reset,0,システム非常停止リセット
+#define,Robot is powered on,0x10F0002,0,Robot is powered on,机器人电源已打开,Robot is powered on,0,ロボットの電源が入っています
+#define,Robot is powered off,0x10F0003,0,Robot is powered off,机器人电源已关闭,Robot is powered off,0,ロボットの電源がオフになっています
+#define,Robot is enabled,0x10F0004,0,Robot is enabled,机器人伺服使能完成,Robot is enabled,0,ロボットサーボ有効化完了
+#define,Robot is disabled,0x10F0005,0,Robot is disabled,机器人伺服使能关闭,Robot is disabled,0,ロボットサーボ有効オフ
+#define,Robot exists magnification mode,0x10F0006,0,Robot exists magnification mode,机器人退出倍率模式,Robot exists magnification mode,0,ロボットは拡大モードを終了します
+#define,Robot enters level-1 magnification mode,0x10F0007,0,Robot enters level-1 magnification mode,机器人进入一级倍率模式,Robot enters level-1 magnification mode,0,ロボットは第 1 レベルの拡大モードに入ります
+#define,Robot enters level-2 magnification mode,0x10F0008,0,Robot enters level-2 magnification mode,机器人进入二级倍率模式,Robot enters level-2 magnification mode,0,ロボットは二次拡大モードに入ります
+#define,Robot enters protective stop,0x10F0009,0,Robot enters protective stop,机器人进入保护性停止,Robot enters protective stop,0,ロボットは保護停止に入ります
+#define,Robot exits collision protective stop,0x10F000a,0,Robot exits collision protective stop,机器人退出碰撞保护性停止,Robot exits collision protective stop,0,ロボットが衝突防止停止を終了
+#define,Robot enters collision protective stop,0x10F000b,0,Robot enters collision protective stop,机器人进入碰撞保护性停止,Robot enters collision protective stop,0,ロボットは衝突防止停止に入ります
+#define,Robot joint limit state recovery,0x10F000c,0,Robot joint limit state recovery,机器人关节限位状态恢复,Robot joint limit state recovery,0,ロボット関節限界状態回復
+#define,Conveyor function is enabled,0x10F000d,0,Conveyor function is enabled,传送带功能已开启,Conveyor function is enabled,0,カルーセル機能がオンになっています
+#define,Conveyor function is disabled,0x10F000e,0,Conveyor function is disabled,传送带功能已关闭,Conveyor function is disabled,0,カルーセル機能はオフです
+#define,Flexible control function is enabled,0x10F000f,0,Flexible control function is enabled,柔顺控制功能已开启,Flexible control function is enabled,0,ソフトコントロールオン
+#define,Flexible control function is disabled,0x10F0010,0,Flexible control function is disabled,柔顺控制功能已关闭,Flexible control function is disabled,0,柔らかさコントロールはオフです
+#define,Robot enters drag-and-drop mode,0x10F0011,0,Robot enters drag-and-drop mode,机器人进入拖拽模式,Robot enters drag-and-drop mode,0,ロボットがドラッグモードに入る
+#define,Robot exists drag-and-drop mode,0x10F0012,0,Robot exists drag-and-drop mode,机器人退出拖拽模式,Robot exists drag-and-drop mode,0,ロボットはドラッグ モードを終了します
+#define,Robot enters force control mode,0x10F0013,0,Robot enters force control mode,机器人进入力控牵引模式,Robot enters force control mode,0,ロボットは力制御牽引モードに入ります
+#define,Robot exists force control mode,0x10F0014,0,Robot exists force control mode,机器人退出力控牵引模式,Robot exists force control mode,0,ロボットは力制御牽引モードを終了します
+#define,Robot SERVO move mode is enabled,0x10F0015,0,Robot SERVO move mode is enabled,机器人SERVO运动模式已开启,Robot SERVO move mode is enabled,0,ロボット SERVO モーション モードがオンです
+#define,Robot SERVO move mode is disabled,0x10F0016,0,Robot SERVO move mode is disabled,机器人SERVO运动模式已关闭,Robot SERVO move mode is disabled,0,ロボット SERVO モーション モードがオフです
+#define,Robot moves beyond safe boundary,0x10F0017,0,Robot moves beyond safe boundary,机器人超出安全边界外,Robot moves beyond safe boundary,1,ロボットが安全境界の外にあります
+#define,Robot returns to safe boundary,0x10F0018,0,Robot returns to safe boundary,机器人返回安全边界内,Robot returns to safe boundary,0,ロボットは安全な範囲内に戻ります
+#define,Cartesian space speed limit is enabled,0x10F0019,0,Cartesian space speed limit is enabled,开启笛卡尔空间限速,Cartesian space speed limit is enabled,0,デカルト空間レート制限を開始
+#define,Cartesian space speed limit is disabled,0x10F001a,0,Cartesian space speed limit is disabled,停止笛卡尔空间限速,Cartesian space speed limit is disabled,0,デカルト空間レート制限を停止
+#define,Program execution starts,0x10F001b,0,Program execution starts,作业程序开始执行,Program execution starts,0,ジョブプログラムの実行開始
+#define,Program execution pauses,0x10F001c,0,Program execution pauses,作业程序暂停执行,Program execution pauses,0,オペレーティングプログラムは中断されています
+#define,Program execution resumes,0x10F001d,0,Program execution resumes,作业程序恢复执行,Program execution resumes,0,ジョブプログラムは実行を再開します
+#define,Program execution stops,0x10F001e,0,Program execution stops,作业程序停止执行,Program execution stops,0,オペレーティングプログラムの実行が停止します
+#define,Security configuration has changed,0x10F001f,1,Security parameter checksum changed from {0} to {1},安全配置发生变更,Security parameter checksum changed from {0} to {1},0,セキュリティ構成が変更されました
+#define,Robot enters reduced mode,0x10F0020,2,Robot enters reduced mode,机器人进入缩减模式,Robot enters reduced mode,1,ロボットが縮小モードに入る
+#define,Robot exists reduced mode,0x10F0021,2,Robot exists reduced mode,机器人退出缩减模式,Robot exists reduced mode,1,ロボットは縮小モードを終了します
+#define,Robot momentum reduced,0x10F0022,0,Robot momentum reduced,机器人进入动量缩减,Robot momentum reduced,1,robot momentum limited
+#define,Robot power reduced,0x10F0023,0,Robot power reduced,机器人进入功率缩减,Robot power reduced,1,robot power limited
+#define,Robot exits protective stop,0x10F0024,2,Robot exits protective stop,机器人退出保护性停止,Robot exits protective stop,1,robot exit protective stop
+#define,Security configuration has changed,0x10F0025,1,Security parameter checksum changed from {0} to {1},用户安全配置发生变更,Security parameter checksum changed from {0} to {1},0,セキュリティ構成が変更されました
+#define,The user's security configuration init pose changes,0x10F0026,1, Security parameter checksum changed from {0} to {1},用户安全配置初始姿态变更, Security parameter checksum changed from {0} to {1},0,セキュリティ構成が変更されました
+#define,The user's safety configuration for the init pose tolerance has changed,0x10F0027,1, The security parameter verification has changed from {0} to {1},用户安全配置初始姿态误差变更, The security parameter verification has changed from {0} to {1},0,セキュリティ構成のセーフティポーズ誤差が変更されました
+#define,Security configuration run mode has changed,0x10F0028,1,Security parameter checksum changed from {0} to {1},用户安全配置控制器运行模式变更,Security parameter checksum changed from {0} to {1},0,ユーザーセキュリティ構成コントローラの運転モード変更
+#define,User safety configuration joint negative limit change,0x10F0029,1, Security parameter checksum changed from {0} to {1},用户安全配置关节负限位变更, Security parameter checksum changed from {0} to {1},0,ユーザー安全設定ジョイントの正の制限の変更
+#define,User safety configuration joint positive limit change,0x10F002a,1, Security parameter checksum changed from {0} to {1},用户安全配置关节正限位变更, Security parameter checksum changed from {0} to {1},0,ユーザー安全設定ジョイントの正の制限の変更
+#define,User security function DI configuration change,0x10F002b,1,Security parameter checksum changed from {0} to {1},用户安全功能di配置变更,Security parameter checksum changed from {0} to {1},0,ユーザーセキュリティ機能DI設定変更
+#define,User security function DO configuration change,0x10F002c,1,Security parameter checksum changed from {0} to {1},用户安全功能do配置变更,Security parameter checksum changed from {0} to {1},0,ユーザーセキュリティ機能DO設定変更
+#define,Robot power limit configuration changed,0x10F002D,1, Security parameter checksum changed from {0} to {1},机器人功率限制配置变更, Security parameter checksum changed from {0} to {1},0,ロボットの電力制限構成が変更されました
+#define,Robot tcp vel limit configuration changed,0x10F002E,1, Security parameter checksum changed from {0} to {1},机器人末端速度限制变更, Security parameter checksum changed from {0} to {1},0,ロボット端末の速度制限が変更されました
+#define,User security configuration stop distance changed,0x10F002F,1, Security parameter checksum changed from {0} to {1},用户安全配置停止距离变更, Security parameter checksum changed from {0} to {1},0,ユーザー安全設定の停止距離が変更され
+#define,User security configuration stop time changed,0x10F0030,1, Security parameter checksum changed from {0} to {1},用户安全配置停止时间变更, Security parameter checksum changed from {0} to {1},0,ユーザー セキュリティ構成の停止時間が変更され
+#define,Elbow speed limit changed,0x10F0031,1, Security parameter checksum changed from {0} to {1},肘部速度限制变更, Security parameter checksum changed from {0} to {1},0,エルボ速度制限が変更されました
+#define,Momentum limit changed,0x10F0032,1, Security parameter checksum changed from {0} to {1},动量限制变更, Security parameter checksum changed from {0} to {1},0,運動量制限が変更されました
+#define,Joint speed limit changes,0x10F0033,1, Security parameter checksum changed from {0} to {1},关节速度限制变更, Security parameter checksum changed from {0} to {1},0, 関節速度制限が変更されました
+#define,Joint error alarm threshold changes,0x10F0034,1, Security parameter checksum changed from {0} to {1},关节误差报警阈值变更, Security parameter checksum changed from {0} to {1},0, 関節誤差警報閾値が変更されました
+#define,The tool attitude constraint is changed,0x10F0035,1, The security parameter check is changed from {0} to {1},工具姿态约束变更, The security parameter check is changed from {0} to {1},0,ツール姿勢制約が変更され
+#define,Collision option changed,0x10F0036,1, Security parameter checksum changed from {0} to {1},碰撞选项变更, Security parameter checksum changed from {0} to {1},0,衝突オプションが変更され
+#define,Servo output limit changed,0x10F0037,1, Security parameter checksum changed from {0} to {1},伺服关节力矩限制变更, Security parameter checksum changed from {0} to {1},0,サーボトルク制限変更。
+#define,The default load configuration at startup has been changed,0x10F0038,1, Security parameter checksum changed from {0} to {1},开机默认加载配置变更, Security parameter checksum changed from {0} to {1},0,起動時のデフォルトのロード構成が変更され
+#define,Power-on auto-enabling status changed,0x10F0039,1, Security parameter checksum changed from {0} to {1},上电自动使能状态变更, Security parameter checksum changed from {0} to {1},0,電源投入時自動有効化ステータスが変更され
+#define,Enable automatic running program status changes,0x10F003A,1, Security parameter checksum changed from {0} to {1},使能自动运行程序状态变更, Security parameter checksum changed from {0} to {1},0,実行中のプログラムのステータスの自動変更を有効にし
+#define,Security plane global configuration changes,0x10F003B,1,Security parameter checksum changed from {0} to {1},安全平面全局配置变更,Security parameter checksum changed from {0} to {1},0,セキュリティプレーンのグローバル設定の変更
+#define,The initialization process detected a security parameter change,0x10F003C,1, Security parameter checksum changed from {0} to {1},初始化过程检测到安全参数变化, Security parameter checksum changed from {0} to {1},1,初期化プロセスでセキュリティ パラメータの変更が検出され
+#define,force limit changes,0x10F003D,1, Security parameter checksum changed from {0} to {1},末端力限制变更, Security parameter checksum changed from {0} to {1},0,終了力制限の変更
+#define,joint sensitivity changes,0x10F003F,1, Security parameter checksum changed from {0} to {1},关节灵敏度变更, Security parameter checksum changed from {0} to {1},0,関節感度の変化
+#define,collision detection enable state changes,0x10F0040,1, Security parameter checksum changed from {0} to {1},碰撞使能状态变更, Security parameter checksum changed from {0} to {1},0,コリジョンイネーブル状態の変更
+#define,Individual safety plane configuration changes,0x10F0041,1, The security parameter checksum has changed from {0} to {1},单个安全平面配置变更, The security parameter checksum has changed from {0} to {1},0,個々のセキュリティ プレーン構成の変更
+#define,Single safety plane point change,0x10F0042,1,Security parameter checksum changed from {0} to {1},单个安全平面点位变更,Security parameter checksum changed from {0} to {1},0,個々の安全平面ポイントの変更
+#define,Failed to query scb version,0x10F0050,2,Failed to query scb version,查询SCB硬件型号失败,,1,
+#define,Setting up the SCB security feature DI configuration failed,0x10F0051,2,Setting up the SCB security feature DI configuration failed,设置SCB安全功能DI配置失败,Setting up the SCB security feature DI configuration failed,1,
+#define,Setting up the SCB security feature DO configuration failed,0x10F0052,2,Setting up the SCB security feature DO configuration failed,设置SCB安全功能DO配置失败,Setting up the SCB security feature DO configuration failed,1,
+#define,Failed to set the SCB power limit configuration,0x10F0053,2,Failed to set the SCB power limit configuration,设置SCB功率限制配置失败,Failed to set the SCB power limit configuration,1,
+#define,Failed to set the SCB tool coordinate system configuration,0x10F0054,2,Failed to set the SCB tool coordinate system configuration,设置SCB工具坐标系配置失败,Failed to set the SCB tool coordinate system configuration,1,
+#define,Failed to set the control cabinet serial number configuration,0x10F0055,2,Failed to set the control cabinet serial number configuration,设置控制柜序列号配置失败,Failed to set the control cabinet serial number configuration,1,
+#define,Failed to set the output voltage configuration of the control cabinet,0x10F0056,2,Failed to set the output voltage configuration of the control cabinet,设置控制柜输出电压配置失败,Failed to set the output voltage configuration of the control cabinet,1,
+#define,Set scb stop time failed,0x10F0057,2,Set scb stop time failed,设置SCB停止时间配置失败,,1,
+#define,Set scb stop distance failed,0x10F0058,2,Set scb stop distance failed,设置SCB停止距离配置失败,,1,
+#define,Torque sensor is enabled,0x10F0100,0,Torque sensor is enabled,力矩传感器已开启,Torque sensor is enabled,0,トルクセンサーON
+#define,Torque sensor is disabled,0x10F0101,0,Torque sensor is disabled,力矩传感器已关闭,Torque sensor is disabled,0,トルクセンサーがオフです
+#define,Extended IO module is enabled,0x10F0102,0,Extended IO module is enabled,扩展IO模块已启用,Extended IO module is enabled,0,拡張 IO モジュールが有効になっています
+#define,Extended IO module is disabled,0x10F0103,0,Extended IO module is disabled,扩展IO模块已关闭,Extended IO module is disabled,0,拡張 IO モジュールが閉じています
+#define,Remote stick locked,0x10F0104,0,Remote stick locked,控制手柄锁定,Remote stick locked,1,コントロールハンドルロック
+#define,Function DI (execute program) is triggered,0x10F0200,0,Function DI (execute program) is triggered,功能DI（执行程序）已触发,Function DI (execute program) is triggered,0,関数 DI (プログラムの実行) のトリガー
+#define,Function DI (pause program) is triggered,0x10F0201,0,Function DI (pause program) is triggered,功能DI（暂停程序）已触发,Function DI (pause program) is triggered,0,ファンクション DI（プログラムの一時停止）がトリガーされました
+#define,Function DI (resume program) is triggered,0x10F0202,0,Function DI (resume program) is triggered,功能DI（恢复程序）已触发,Function DI (resume program) is triggered,0,関数 DI (再開手順) がトリガーされました
+#define,Function DI (stop program) is triggered,0x10F0203,0,Function DI (stop program) is triggered,功能DI（停止程序）已触发,Function DI (stop program) is triggered,0,機能 DI (プログラム停止) がトリガーされました
+#define,Function DI (power on) is triggered,0x10F0204,0,Function DI (power on) is triggered,功能DI（打开电源）已触发,Function DI (power on) is triggered,0,機能 DI (電源オン) トリガー
+#define,Function DI (power off) is triggered,0x10F0205,0,Function DI (power off) is triggered,功能DI（关闭电源）已触发,Function DI (power off) is triggered,0,機能 DI (電源オフ) トリガー
+#define,Function DI (servo enabled) is triggered,0x10F0206,0,Function DI (servo enabled) is triggered,功能DI（伺服使能打开）已触发,Function DI (servo enabled) is triggered,0,機能 DI (サーボ有効オン) がトリガーされました
+#define,Function DI (servo disabled) is triggered,0x10F0207,0,Function DI (servo disabled) is triggered,功能DI（伺服使能关闭）已触发,Function DI (servo disabled) is triggered,0,機能 DI (サーボ有効オフ) がトリガーされました
+#define,Function DI (enters level-1 magnification mode） is triggered,0x10F0208,0,Function DI (enters level-1 magnification mode） is triggered,功能DI（进入一级倍率模式）已触发,Function DI (enters level-1 magnification mode） is triggered,0,機能 DI (第 1 オーバーライド モードに入る) がトリガーされる
+#define,Function DI (enters level-2 magnification mode） is triggered,0x10F0209,0,Function DI (enters level-2 magnification mode） is triggered,功能DI（进入二级倍率模式）已触发,Function DI (enters level-2 magnification mode） is triggered,0,機能 DI (2 次オーバーライド モードに入る) がトリガーされる
+#define,Function DI (enters protective stop）is triggered,0x10F020a,0,Function DI (enters protective stop）is triggered,功能DI（进入保护性停止）已触发,Function DI (enters protective stop）is triggered,0,機能 DI (保護停止への移行) がトリガーされました
+#define,Function DI (return to initial position) is triggered,0x10F020b,0,Function DI (return to initial position) is triggered,功能DI（返回初始位置）已触发,Function DI (return to initial position) is triggered,0,ファンクションDI（初期位置復帰）発動
+#define,Function DI (clear error) is triggered,0x10F020c,0,Function DI (clear error) is triggered,功能DI（清除错误）已触发,Function DI (clear error) is triggered,0,ファンクション DI（クリア エラー）がトリガーされました
+#define,Function DI (enter drag-and-drop mode） is triggered,0x10F020d,0,Function DI (enter drag-and-drop mode） is triggered,功能DI（进入拖拽模式）已触发,Function DI (enter drag-and-drop mode） is triggered,0,機能 DI (Enter Drag Mode) のトリガー
+#define,Function DI (exit drag-and-drop mode） is triggered,0x10F020e,0,Function DI (exit drag-and-drop mode） is triggered,功能DI（退出拖拽模式）已触发,Function DI (exit drag-and-drop mode） is triggered,0,関数 DI (ドラッグ モードの終了) のトリガー
+#define,"Function DI (stop program or pause program) is triggered | (run program) should not be executed",0x10F020f,1,"Function DI (stop program or pause program) is triggered | (run program) should not be executed",功能DI（停止程序 或 暂停程序）已触发，（运行程序）不该被执行,"Function DI (stop program or pause program) is triggered, (run program) should not be executed",1,機能 DI (プログラムの停止またはプログラムの中断) がトリガーされました。(プログラムの実行) を実行しないでください
+#define,"Function DI (pause program) is triggered | (resume program) should not be executed",0x10F0210,1,"Function DI (pause program) is triggered | (resume program) should not be executed",功能DI（暂停程序）已触发，（恢复程序）不该被执行,"Function DI (pause program) is triggered, (resume program) should not be executed",1,関数 DI (プログラムの一時停止) がトリガーされ、(プログラムの再開) は実行されません
+#define,"Function DI (power off) is triggered | (power on) should not be executed",0x10F0211,1,"Function DI (power off) is triggered | (power on) should not be executed",功能DI（关闭电源）已触发，（打开电源）不该被执行,"Function DI (power off) is triggered, (power on) should not be executed",1,機能 DI (電源オフ) がトリガーされ、 (電源オン) は実行されません
+#define,"Function DI (disable) is triggered | (enable) should not be executed",0x10F0212,1,"Function DI (disable) is triggered | (enable) should not be executed",功能DI（下使能）已触发，（上使能）不该被执行,"Function DI (disable) is triggered, (enable) should not be executed",1,機能 DI (Enable Down) がトリガーされました。(Enable Up) は実行しないでください
+#define,Function DO (operational idle) set,0x10F0220,0,Function DO (operational idle) set,功能DO（作业空闲）置位,Function DO (operational idle) set,0,機能DO（ジョブアイドル）を設定
+#define,Function DO (operational idle) reset,0x10F0221,0,Function DO (operational idle) reset,功能DO（作业空闲）复位,Function DO (operational idle) reset,0,機能 DO（ジョブアイドル）リセット
+#define,Function DO (program pause) set,0x10F0222,0,Function DO (program pause) set,功能DO（作业程序暂停）置位,Function DO (program pause) set,0,機能 DO（ジョブプログラム一時停止）設定
+#define,Function DO (program pause) reset,0x10F0223,0,Function DO (program pause) reset,功能DO（作业程序暂停）复位,Function DO (program pause) reset,0,機能 DO（ジョブプログラム一時停止）リセット
+#define,Function DO (program running) set,0x10F0224,0,Function DO (program running) set,功能DO（作业程序运行中）置位,Function DO (program running) set,0,機能 DO（ワークプログラム実行）設定
+#define,Function DO (program running) reset,0x10F0225,0,Function DO (program running) reset,功能DO（作业程序运行中）复位,Function DO (program running) reset,0,機能 DO（作業プログラム実行中）リセット
+#define,Function DO (control system error) set,0x10F0226,0,Function DO (control system error) set,功能DO（控制系统故障）置位,Function DO (control system error) set,0,機能DO（制御系異常）を設定
+#define,Function DO (control system error) reset,0x10F0227,0,Function DO (control system error) reset,功能DO（控制系统故障）复位,Function DO (control system error) reset,0,機能 DO（制御系異常）リセット
+#define,Function DO（robot is powered on）set,0x10F0228,0,Function DO（robot is powered on）set,功能DO（机器人电源已打开）置位,Function DO（robot is powered on）set,0,機能 DO（ロボット電源オン）を設定
+#define,Function DO（robot is powered on）reset,0x10F0229,0,Function DO（robot is powered on）reset,功能DO（机器人电源已打开）复位,Function DO（robot is powered on）reset,0,機能 DO (ロボット電源オン) リセット
+#define,Function DO (servo enabled) set,0x10F022a,0,Function DO (servo enabled) set,功能DO（伺服使能已打开）置位,Function DO (servo enabled) set,0,機能DO（サーボイネーブルON）を設定
+#define,Function DO (servo enabled) reset,0x10F022b,0,Function DO (servo enabled) reset,功能DO（伺服使能已打开）复位,Function DO (servo enabled) reset,0,機能 DO（サーボイネーブルオン）リセット
+#define,Function DO（robot moving）set,0x10F022c,0,Function DO（robot moving）set,功能DO（机器人运动中）置位,Function DO（robot moving）set,0,機能DO（ロボットインモーション）セット
+#define,Function DO（robot moving）reset,0x10F022d,0,Function DO（robot moving）reset,功能DO（机器人运动中）复位,Function DO（robot moving）reset,0,機能 DO（ロボット動作中）リセット
+#define,Function DO (robot stationary) set,0x10F022e,0,Function DO (robot stationary) set,功能DO（机器人静止）置位,Function DO (robot stationary) set,0,機能DO（ロボット固定）セット
+#define,Function DO（robot stationary) reset,0x10F022f,0,Function DO（robot stationary) reset,功能DO（机器人静止）复位,Function DO（robot stationary) reset,0,機能 DO（ロボット固定）リセット
+#define,Function DO (control system ready) set,0x10F0230,0,Function DO (control system ready) set,功能DO（控制系统已就绪）置位,Function DO (control system ready) set,0,機能DO（制御系レディ）の設定
+#define,Function DO (control system ready) reset,0x10F0231,0,Function DO (control system ready) reset,功能DO（控制系统已就绪）复位,Function DO (control system ready) reset,0,機能 DO（制御系レディ）リセット
+#define,Function DO (robot emergency stop) set,0x10F0232,0,Function DO (robot emergency stop) set,功能DO（机器人急停）置位,Function DO (robot emergency stop) set,0,機能 DO（ロボット非常停止）設定
+#define,Function DO（robot emergency stop) reset,0x10F0233,0,Function DO（robot emergency stop) reset,功能DO（机器人急停）复位,Function DO（robot emergency stop) reset,0,機能 DO（ロボット非常停止）リセット
+#define,Function DO（robot in level-2 magnification mode） set,0x10F0234,0,Function DO（robot in level-2 magnification mode） set,功能DO（机器人处于二级倍率模式）置位,Function DO（robot in level-2 magnification mode） set,0,機能 DO (ロボットは二次オーバーライド モード) が設定されています
+#define,Function DO（robot in level-2 magnification mode） reset,0x10F0235,0,Function DO（robot in level-2 magnification mode） reset,功能DO（机器人处于二级倍率模式）复位,Function DO（robot in level-2 magnification mode） reset,0,機能 DO（二次オーバーライドモードのロボット）のリセット
+#define,Function DO (robot in protective stop) set,0x10F0236,0,Function DO (robot in protective stop) set,功能DO（机器人处于保护性停止）置位,Function DO (robot in protective stop) set,0,機能 DO（ロボット急停止）を設定
+#define,Function DO（robot in protective stop) reset,0x10F0237,0,Function DO（robot in protective stop) reset,功能DO（机器人处于保护性停止）复位,Function DO（robot in protective stop) reset,0,機能 DO（ロボット急停止）リセット
+#define,Function DO (robot initial position) set,0x10F0238,0,Function DO (robot initial position) set,功能DO（机器人处于初始位）置位,Function DO (robot initial position) set,0,機能DO（ロボット初期位置）を設定
+#define,Function DO (robot initial position) reset,0x10F0239,0,Function DO (robot initial position) reset,功能DO（机器人处于初始位）复位,Function DO (robot initial position) reset,0,機能 DO（ロボット初期位置）リセット
+#define,Function DO（robot in level-1 magnification mode） set,0x10F0240,0,Function DO（robot in level-1 magnification mode） set,功能DO（机器人处于一级倍率模式）置位,Function DO（robot in level-1 magnification mode） set,0,機能 DO (ロボットは一次オーバーライド モード) の設定
+#define,Function DO（robot in level-1 magnification mode） reset,0x10F0241,0,Function DO（robot in level-1 magnification mode） reset,功能DO（机器人处于一级倍率模式）复位,Function DO（robot in level-1 magnification mode） reset,0,機能 DO (ロボットは一次オーバーライド モード) リセット
+#define,Safety function DI (additional emergency stop) triggered,0x10F0250,0,Safety function DI (additional emergency stop) triggered,安全功能DI（附加急停）已触发,Safety function DI (additional emergency stop) triggered,0,安全機能 DI（追加非常停止）作動
+#define,Safety function DI (additional protective stop) triggered,0x10F0251,0,Safety function DI (additional protective stop) triggered,安全功能DI（附加保护性停止）已触发,Safety function DI (additional protective stop) triggered,0,安全機能 DI (追加の保護停止) が作動
+#define,Safety function DI (protective stop reset）is triggered,0x10F0252,0,Safety function DI (protective stop reset）is triggered,安全功能DI（保护性停止复位）已触发,Safety function DI (protective stop reset）is triggered,0,安全機能 DI（保護停止リセット）作動
+#define,Safety function DI (reduced mode） is triggered,0x10F0253,0,Safety function DI (reduced mode） is triggered,安全功能DI（缩减模式）已触发,Safety function DI (reduced mode） is triggered,0,安全機能 DI（Reduced Mode）作動
+#define,Safety function DI (3-position enabled) is triggered,0x10F0254,0,Safety function DI (3-position enabled) is triggered,安全功能DI（三位置使能）已触发,Safety function DI (3-position enabled) is triggered,0,安全機能 DI (3 ポジション イネーブル) がトリガされました
+#define,Safety function DI (SET collision sensitivity level0) triggered,0x10F0255,0,Safety function DI (SET collision sensitivity level0) triggered,安全功能DI设置碰撞灵敏度（level0）已触发,Safety function DI (SET collision sensitivity level0) triggered,0,安全機能 DI （衝突感度レベル0の設定） がトリガされました
+#define,Safety function DI (SET collision sensitivity level1) triggered,0x10F0256,0,Safety function DI (SET collision sensitivity level1) triggered,安全功能DI设置碰撞灵敏度（level1）已触发,Safety function DI (SET collision sensitivity level1) triggered,0,安全機能 DI （衝突感度レベル1の設定） がトリガされました
+#define,Safety function DI (SET collision sensitivity level2) triggered,0x10F0257,0,Safety function DI (SET collision sensitivity level2) triggered,安全功能DI设置碰撞灵敏度（level2）已触发,Safety function DI (SET collision sensitivity level2) triggered,0,安全機能 DI （衝突感度レベル2の設定） がトリガされました
+#define,Safety function DI (SET collision sensitivity level3) triggered,0x10F0258,0,Safety function DI (SET collision sensitivity level3) triggered,安全功能DI设置碰撞灵敏度（level3）已触发,Safety function DI (SET collision sensitivity level3) triggered,0,安全機能 DI （衝突感度レベル3の設定） がトリガされました
+#define,Safety function DI (SET collision sensitivity level4) triggered,0x10F0259,0,Safety function DI (SET collision sensitivity level4) triggered,安全功能DI设置碰撞灵敏度（level4）已触发,Safety function DI (SET collision sensitivity level4) triggered,0,安全機能 DI （衝突感度レベル4の設定） がトリガされました
+#define,Safety function DI (SET collision sensitivity level5) triggered,0x10F025A,0,Safety function DI (SET collision sensitivity level5) triggered,安全功能DI设置碰撞灵敏度（level5）已触发,Safety function DI (SET collision sensitivity level5) triggered,0,安全機能 DI （衝突感度レベル5の設定） がトリガされました
+#define,Safety function DI (SET collision sensitivity level7) triggered,0x10F025B,0,Safety function DI (SET collision sensitivity level7) triggered,安全功能DI设置碰撞灵敏度（level7）已触发,Safety function DI (SET collision sensitivity level7) triggered,0,安全機能 DI （衝突感度レベル7の設定） がトリガされました
+#define,Safety function DO (emergency stop button trigger) set,0x10F0260,0,Safety function DO (emergency stop button trigger) set,安全功能DO（按钮急停触发）置位,Safety function DO (emergency stop button trigger) set,0,安全機能DO（押しボタンによる非常停止）を設定
+#define,Safety function DO (emergency stop button trigger) reset,0x10F0261,0,Safety function DO (emergency stop button trigger) reset,安全功能DO（按钮急停触发）复位,Safety function DO (emergency stop button trigger) reset,0,安全機能 DO（ボタン非常停止作動）リセット
+#define,Safety function DO (system emergency stop trigger) set,0x10F0262,0,Safety function DO (system emergency stop trigger) set,安全功能DO（系统急停触发）置位,Safety function DO (system emergency stop trigger) set,0,安全機能DO（システム非常停止トリガ）を設定
+#define,Safety function DO (system emergency stop trigger) reset,0x10F0263,0,Safety function DO (system emergency stop trigger) reset,安全功能DO（系统急停触发）复位,Safety function DO (system emergency stop trigger) reset,0,安全機能 DO（システム非常停止トリガ）リセット
+#define,Safety function DO (robot in protective stop) set,0x10F0264,0,Safety function DO (robot in protective stop) set,安全功能DO（机器人处于保护性停止）置位,Safety function DO (robot in protective stop) set,0,安全機能DO（ロボット急停止）を設定
+#define,Safety function DO（robot in protective stop) reset,0x10F0265,0,Safety function DO（robot in protective stop) reset,安全功能DO（机器人处于保护性停止）复位,Safety function DO（robot in protective stop) reset,0,安全機能 DO（ロボット急停止）リセット
+#define,Safety function DO（robot moving）set,0x10F0266,0,Safety function DO（robot moving）set,安全功能DO（机器人运动中）置位,Safety function DO（robot moving）set,0,安全機能DO（ロボット動作中）を設定
+#define,Safety function DO（robot moving）reset,0x10F0267,0,Safety function DO（robot moving）reset,安全功能DO（机器人运动中）复位,Safety function DO（robot moving）reset,0,安全機能DO（ロボット動作中）を設定
+#define,Function DO（robot in reduced mode） set,0x10F0268,0,Function DO（robot in reduced mode） set,安全功能DO（机器人处于缩减模式）置位,Function DO（robot in reduced mode） set,0,安全機能DO（ロボットの縮小モード）が設定されている
+#define,Function DO（robot in reduced mode） reset,0x10F0269,0,Function DO（robot in reduced mode） reset,安全功能DO（机器人处于缩减模式）复位,Function DO（robot in reduced mode） reset,0,安全機能 DO（ロボット縮退モード）リセット
+#define,The digital output port is unavailable,0x10F026A,2,The digital output port is unavailable,数字输出端口不可用,The digital output port is unavailable,1,デジタル出力ポートは使用できません。
+#define,Dynamic parameter identification completed,0x10F0280,1,Dynamic parameter identification completed,动力学参数辨识完成,Dynamic parameter identification completed,1,動力学パラメータの認識完了
+#define,Friction parameter identification completed,0x10F0281,1,Friction parameter identification completed,摩擦力参数辨识完成,Friction parameter identification completed,1,摩擦力パラメータの認識完了
+#define,"Write dynamics parameters complete, restart or power on again to take effect",0x10F0282,1,"Write dynamics parameters complete, restart or power on again to take effect",写动力学参数完成,"Write dynamics parameters complete, restart or power on again to take effect",1,ライトダイナミクスパラメータが完了し、再起動または再電源オンが有効になります
+#define,Collision rebound abort ,0x10F0283,0,"The collision point is too close to the starting point of the motion, and the rebound may be terminated due to the inability to confirm whether the rebound path is safe",碰撞反弹终止,"The collision point is too close to the starting point of the motion, and the rebound may be terminated due to the inability to confirm whether the rebound path is safe",1,衝突バウンスの終了
+#define,There is no rebound in this collision,0x10F0284,0,"The collision point is approaching or has stopped, and rebound will not be performed for this collision",本次碰撞无反反弹,"The collision point is approaching or has stopped, and rebound will not be performed for this collision",1,この衝突にはリバウンドはありません
+#define,Login initialization failure,0x10F0300,1,Login initialization failure,登录初始化失败,Login initialization failure,1,ログインの初期化に失敗しました
+#define,The version is test version, 0x10F0301, 1,The version is test version, 此版本为测试版本,The version is test version,1,内部テストバージョンが失効しました
+#define,No error,0xE0000,1,no error,没有错误,no error,0,間違いありません
+#define,GRPC call failed,0xE0001,1,grpc call failed,gRPC调用异常,grpc call failed,0,gRPCは例外を呼び出します
+#define,Incorrect password,0xE0002,1,incorrect password,密码错误,incorrect password,0,パスワードが違います
+#define,Incorrect username,0xE0003,1,incorrect username,用户名错误,incorrect username,0,ユーザー名エラーです。
+#define,Repeated login,0xE0004,1,Repeated login,重复登录,Repeated login,0,重複登録です。
+#define,User unlogged-in,0xE0005,1,user unlogged-in,用户尚未登录,user unlogged-in,0,ユーザーはまだログインしていません
+#define,Joint_min_limit is too small or joint_max_limit is too large,0xE0006,1,joint_min_limit is too small or joint_max_limit is too large,关节限位异常,joint_min_limit is too small or joint_max_limit is too large,0,関節ストッパ異常です
+#define,Fail to find kinematics inverse,0xE0007,1,fail to find kinematics inverse,运动学逆解失败,fail to find kinematics inverse,0,運動学的逆解の失敗です
+#define,Fail to find kinematics forward ,0xE0008,1,fail to find kinematics forward ,运动学正解失败,fail to find kinematics forward ,0,運動学の正解失敗です
+#define,No such file or directory,0xE0009,1,no such file or directory,找不到文件或者文件夹,no such file or directory,0,ファイルやフォルダが見当たりません
+#define,Md5 is not match,0xE000A,1,md5 is not match,MD5检测没有匹配,md5 is not match,0,MD5検出は一致しません
+#define,Fail to calculate TCP ,0xE000B,1,fail to calculate TCP ,计算工具中心点失败,fail to calculate TCP ,0,中心点の計算に失敗します
+#define,Invalid arguments ,0xE000C,1,invalid arguments ,无效的参数,invalid arguments ,0,無効なパラメータです
+#define,Too many outputs bind to the same status,0xE000D,1,too many outputs bind to the same status,太多的输出绑定到相同的状态,too many outputs bind to the same status,0,あまりにも多くの出力が同じ状態に結びつけられています
+#define,The variable alias already exists,0xE000E,1,the variable alias already exists,变量别名已存在,the variable alias already exists,0,変数の別名は既に存在します
+#define,Parameter value out of range,0xE000F,1,parameter value out of range,参数值超出范围,parameter value out of range,0,パラメータ値がオーバーします
+#define,Msgid out of range,0xE0010,1,msgid out of range,消息ID超出范围,msgid out of range,0,メッセージIDは範囲外です
+#define,Strings should not exceed 16 characters,0xE0011,1,strings should not exceed 16 characters,字符串不应超过16个字符,strings should not exceed 16 characters,0,文字列は16文字を超えてはいけません
+#define,Permission denied,0xE0012,1,permission denied,没有操作权限,permission denied,0,操作権限はありません
+#define,Invalid user level,0xE0013,1,invalid user level,用户权限等级不正确,invalid user level,0,ユーザー権限レベルが不正確です。
+#define,Username has been used,0xE0014,1,username has been used,用户名已经存在,username has been used,0,ユーザー名は既に存在します
+#define,Upgrade package is invalid,0xE0015,1,upgrade package is invalid,升级安装包不正确,upgrade package is invalid,0,アップグレードインストールパッケージが正しくありません。
+#define,Unsupported jog coord,0xE0016,1,unsupported jog coord,不支持jog坐标系,unsupported jog coord,0,インストールパッケージの名称が正しいか確認をお願いします。
+#define,Unsupported jog mode,0xE0017,1,unsupported jog mode,当前不支持该模式,unsupported jog mode,0,このモードは現在サポートされていません。
+#define,robot are moving,0xE0018,1,robot are moving,机器人正在移动,robot are moving,0,ロボットが動いています
+#define,cannot load program when a program isRunning,0xE0019,1,cannot load program when a program isRunning,作业运行时无法执行作业加载,cannot load program when a program isRunning,0,ジョブ実行時にジョブロードを実行できません。
+#define,the pin has been occupied,0xE001A,1,the pin has been occupied,当前引脚被其他功能占用,the pin has been occupied,0,現在ピンは他の機能に占有されています
+#define,fail to set reducing rate in reduced mode,0xE001B,1,fail to set reducing rate in reduced mode,衰减模式下无法设置各级衰减倍率,fail to set reducing rate in reduced mode,0,減衰モードでは各レベルの減衰倍率は設定できません。
+#define,failed to generate scripts for trejectory reproduction,0xE001C,1,failed to generate scripts for trejectory reproduction,轨迹复现时生成ngc脚本失败,failed to generate scripts for trejectory reproduction,0,軌跡再現ではngcスクリプトの生成に失敗します
+#define,only one tio RS485 channel can be used torque sensor,0xE001D,1,only one tio RS485 channel can be used torque sensor,只有一个Tiors 485通道可以使用扭矩传感器,only one tio RS485 channel can be used torque sensor,0,トルクセンサが使えるチャンネルはTiors 485の1つだけです
+#define,fail torque sensor channel since it is working,0xE001E,1,fail torque sensor channel since it is working,力矩传感器通道切换失败,fail torque sensor channel since it is working,0,モーションセンサチャネル切替失敗です
+#define,invalid robot seiral number,0xE001F,1,invalid robot seiral number,机器人流水号不正确,invalid robot seiral number,0,ロボット番号が間違っています
+#define,memory server connection refused since it is not running  ,0xE0020,1,memory server connection refused since it is not running  ,redis服务未启动,memory server connection refused since it is not running  ,0,redisサービスが起動していません
+#define,unknown robot model,0xE0021,1,unknown robot model,未知的机器人模型,unknown robot model,0,未知の模型ロボットです
+#define,extio  modoule number or extio io number exceed the constranit,0xE0022,1,extio  modoule number or extio io number exceed the constranit,扩展IO不正确,extio  modoule number or extio io number exceed the constranit,0,拡張IOが正しくありません。
+#define,This operation is not allowed in simulation mode,0xE0026,1,This operation is not allowed in simulation mode,仿真模式下不允许此操作,This operation is not allowed in simulation mode,0,シミュレーションモードではこの操作は許可されていません。
+#define,Failed to read the network configuration file,0xE0027,1,Failed to read the network configuration file,读取网络配置文件失败,Failed to read the network configuration file,0,ネットワーク構成ファイルの読み取りに失敗しました
+#define,two many inputs bind to the same function,0xE0028,1,two many inputs bind to the same function,太多的输入绑定到相同的功能,two many inputs bind to the same function,0,入力が多すぎて同じ機能にバインドされている
+#define,addon service numbers exceed the constranit,0xE03E8,1,addon service numbers exceed the constranit,AddOn启动数目超过限制,addon service numbers exceed the constranit,0,アドドン起動数が制限を超えました
+#define,start addon service failed,0xE03E9,1,start addon service failed,AddOn服务开启失败,start addon service failed,0,AddOnサービス開始失敗しました
+#define,stop addon service failed,0xE03EA,1,stop addon service failed,AddOn服务关闭失败,stop addon service failed,0,AddOnサービス停止失敗しました
+#define,addon config is invalid,0xE03EB,1,addon config is invalid,配置文件无效,addon config is invalid,0,プロファイルは無効です。
+#define,addon service is not exist,0xE03EC,1,addon service is not exist,AddOn服务不存在,addon service is not exist,0,AddOnサービスは存在しません
+#define,addon config is not exist,0xE03ED,1,addon config is not exist,AddOn配置不存在,addon config is not exist,0,アドドン配置は存在しません
+#define,addon ini convention is unknown,0xE03EE,1,addon ini convention is unknown,配置文件中 AddOn 规范未知,addon ini convention is unknown,0,設定ファイルにAddOn仕様が未知です
+#define,addon ini type is unknown,0xE03EF,1,addon ini type is unknown,配置文件中AddOn类型错误,addon ini type is unknown,0,設定ファイルのAddOnタイプエラーです
+#define,addon ini language type is unknown,0xE03F0,1,addon ini language type is unknown,配置文件编程语言错误,addon ini language type is unknown,0,プロファイル言語エラーです
+#define,addon ini service run err ,0xE03F1,1,addon ini service run err ,配置文件中AddOn程序入口错误,addon ini service run err ,0,設定ファイルAddOnエントリエラーです
+#define,addon ini service enabled is err,0xE03F2,1,addon ini service enabled is err,配置文件中自启动配置错误,addon ini service enabled is err,0,設定ファイルに自己起動設定エラーがあります
+#define,addon ini option missing,0xE03F3,1,addon ini option missing,配置文件缺少必须的配置项,addon ini option missing,0,プロファイルに必要な構成項目が欠けています
+#define,addon ini option name error,0xE03F4,1,addon ini option name error,配置文件中AddOn中名称配置出错,addon ini option name error,0,設定ファイルAddOnに名前の設定エラーがあります
+#define,addon ini option description error,0xE03F5,1,addon ini option description error,配置文件中 AddOn 描述出错,addon ini option description error,0,設定ファイルにAddOnの記述が間違っています
+#define,addon ini option server vision,0xE03F6,1,addon ini option server vision,AddOn版本无法识别,addon ini option server vision,0,AddOn版では認識できません
+#define,addon ini option url error,0xE03F7,1,addon ini option url error,配置文件中AddOn中Url出错,addon ini option url error,0,設定ファイルAddOnのUrlが間違っています
+#define,addon ini option port error ,0xE03F8,1,addon ini option port error ,分配端口号发生异常,addon ini option port error ,0,配信ポート番号に異常が発生しました
+#define,addon server running,0xE03F9,1,addon server running,AddOn服务正在运行,addon server running,0,AddOnサービスが稼働しています
+#define,the directory is already existed,0xE03FA,1,the directory is already existed,目录已经存在,the directory is already existed,0,カタログは既に存在しています
+#define,ip address existed,0xE03FB,1,ip address existed,IP地址已经存在,ip address existed,0,IPアドレスは既に存在します
+#define,"check sum not match, upgrading",0xE044C,1,"check sum not match, upgrading",校验文件不匹配,"check sum not match, upgrading",0,チェックファイルが一致しません。
+#define,"wrong admin password | change user info",0xE044D,1,"wrong admin password | change user info",密码错误,"wrong admin password, change user info",0,パスワードが違います
+#define,input passwords are inconsistent,0xE044E,1,input passwords are inconsistent,两次密码输入不一致,input passwords are inconsistent,0,パスワードの入力が2回一致しません
+#define,password need to be reset before login,0xE044F,1,password need to be reset before login,首次登录需要重置密码,password need to be reset before login,0,初回のログインにはパスワードのリセットが必要です
+#define,new password cannot be the same with the old one,0xE0450,1,new password cannot be the same with the old one,修改密码不能与上一次相同,new password cannot be the same with the old one,0,前回と同じパスワードの変更はできません。
+#define,"the account is not activated, please contact the administrator",0xE0451,1,"the account is not activated, please contact the administrator",账户未激活,"the account is not activated, please contact the administrator",0,アカウントが未起動です
+#define,incorrect account to be activated,0xE0452,1,incorrect account to be activated,无法激活账号,incorrect account to be activated,0,アカウントの起動ができません
+#define,addon installer is busy,0xE0453,1,addon installer is busy,AddOn正在安装,addon installer is busy,0,AddOnがインストール中です
+#define,failed to pack addon.,0xE0454,1,failed to pack addon.,AddOn安装失败,failed to pack addon.,0,AddOnインストールに失敗しました
+#define,addon install or pack over time.,0xE0455,1,addon install or pack over time.,AddOn包过大,addon install or pack over time.,0,AddOnパケットは大きすぎます
+#define,miscellaneous error,0xEFFFF,1,miscellaneous error,未知错误,miscellaneous error,0,未知の誤りです
