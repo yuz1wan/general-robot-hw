@@ -20,7 +20,7 @@ import numpy as np
 import argparse
 from termcolor import cprint
 import pybullet as p
-
+import requests as req
 sys.path.append(os.path.join(os.path.dirname(__file__), './SDK'))
 
 
@@ -102,6 +102,9 @@ class RobotController:
         robot_points = []
         # Mouse callback function
 
+        # cap.release()
+        
+
         def mouse_callback(event, x, y, flags, param):
             if event == cv2.EVENT_LBUTTONDOWN:
                 # Add the clicked point to the robot_points array
@@ -117,6 +120,7 @@ class RobotController:
         while len(robot_points) < 4:
             # wait for the user to click the four points
             cv2.waitKey(1)
+        cv2.destroyAllWindows()
 
         return robot_points
 
@@ -134,6 +138,7 @@ class RobotController:
         self.READY_POINT = tcp_position
 
         # Calibrate the rgb position to robot position
+        wait_for_user('Begin matrix calib.')
         self.robot_points = np.array(self.pick_four_points(), dtype=np.float32)
 
         # Print the four corner points
@@ -185,6 +190,20 @@ class RobotController:
         except Exception as e:
             print(f"Error: {e}")
             return None
+
+    def get_image(self, id=0):
+        self.cap = cv2.VideoCapture(id)
+        try:
+            cap = self.cap
+            ret, frame = cap.read()
+            cv2.imshow('frame', frame)
+            cap.release()
+            cv2.destroyAllWindows()
+            return frame
+        except Exception as e:
+            print(f"Error: {e}")
+            return None
+
 
     def move_to(self, target_pos, target_orn=None):
         robot_end_pos = target_pos
@@ -266,8 +285,15 @@ class RobotController:
         return robot_point[0, 0]
 
     def get_pixel_point(self, img):
-        # TODO: get the pixel point from hwc
-        pass
+        url = "https://29a8dea0b5764c0ea29afc2b174a0c1f.apig.cn-north-4.huaweicloudapis.com/v1/infers/be923697-802b-4a58-82ba-d65be4dc1162"
+        with open("./token.txt") as fp:
+            token = fp.read()
+        _, img_encoded = cv2.imencode('.jpg', img)
+        resp = req.post(url, files={"images": img_encoded}, headers={"X-Auth-Token": token})
+        boxes = resp.json().get("detection_boxes")
+        if not boxes:
+            raise ValueError("Detection failed")
+        return [[(b+d)/2, (a+c)/2] for a,b,c,d in boxes]
 
     def accurateCalculateInverseKinematics(self, kukaId, endEffectorId, targetPos, targetRot=None, threshold=0.01, maxIter=100):
         # save the current state
@@ -356,11 +382,32 @@ def main():
     controller.calibrate_matrix()
 
     wait_for_user('Enter to photo the block.')
-    img = controller.get_rgb_image()
+    id = 1
+    img = controller.get_rgb_image(id)
+    while img is None:
+        print("Failed to get image at camera ", id)
+        id += 1
+        img = controller.get_rgb_image(id)
+    # cv2.imshow('frame', img)
+
     pixel_points = controller.get_pixel_point(img)
+
+    id = 1
+    img = controller.get_image(id)
+    while img is None:
+        print("Failed to get image at camera ", id)
+        id += 1
+        img = controller.get_image(id)
+    # cv2.imshow('frame', img)
+    print("pixel_points:", pixel_points)
     for i in range(len(pixel_points)):
+        x = int(pixel_points[i][0])
+        y = int(pixel_points[i][1])
+        cv2.circle(img, (x, y), 5, (0, 0, 255), -1)
+        cv2.imshow('frame', img)
+
         robot_point = controller.pixel2robot(pixel_points[i])
-        print("Ready to move to pixel point: ", i)
+        print(f"Ready to move to pixel point: {robot_point}, idx", i)
         # TODO: enable the tool++++++++++++++++++
 
         wait_for_user('Enter to move robot to the block.')
@@ -436,5 +483,5 @@ def debug_move():
 
 
 if __name__ == '__main__':
-    # main()
-    debug_move()
+    main()
+    # debug_move()

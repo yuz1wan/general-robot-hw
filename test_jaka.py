@@ -40,7 +40,7 @@ while True:
         extend_io = robot.is_extio_running()
         # robot.drag_mode_enable(True)    
         tool_id = robot.get_tool_id()
-        tool_ret = robot.set_digital_input(1, 0, 1)
+        # tool_ret = robot.set_digital_input(1, 0, 1)
         robot_stat = robot.get_robot_status ()
         # print("++++++++++++++++++++")
         # print("robot status: ", robot_stat)
@@ -50,7 +50,7 @@ while True:
         print("joints: ", joints)
         print("tcp_pos: ", tcp_pos)
         print("extend_io: ", extend_io)
-        print("tool ret: ", tool_ret)
+        # print("tool ret: ", tool_ret)
     elif a == 'm':
         PI = 3.14
         joint_pos=[PI,PI/2,0,PI//4,0,0]
