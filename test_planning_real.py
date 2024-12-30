@@ -370,6 +370,19 @@ class RobotController:
         # Add a delay after the motion to stabilize the robot
         # wait_for_duration(1.0)
 
+    def tool_use(self, on = True):
+        if on:
+            tool_ret = self.jaka.set_digital_output(1, 0, 0)
+            # print("!")
+            tool_ret = self.jaka.set_digital_output(1, 1, 1)
+            # print("1")
+            print("Tool On!!")
+        else:
+            tool_ret = self.jaka.set_digital_output(1, 0, 1)
+            # print("!")
+            tool_ret = self.jaka.set_digital_output(1, 1, 0)
+            # print("1")
+            print("Tool Off!!")
 def camera_debug():
     controller = RobotController()
 
@@ -407,6 +420,7 @@ def main():
     controller.load_jaka(robot_path)
     controller.connect_robot()
     wait_for_user('Connect robot successfully! Press enter to continue.')
+    controller.tool_use(False)
     controller.calibrate_matrix()
 
     wait_for_user('Enter to photo the block.')
@@ -437,18 +451,24 @@ def main():
         robot_point = controller.pixel2robot(pixel_points[i])
         print(f"Ready to move to pixel point: {robot_point}, idx", i)
         # TODO: enable the tool++++++++++++++++++
+        controller.tool_use(True)
 
         wait_for_user('Enter to move robot to the block.')
         robot_point = [robot_point[0], robot_point[1], 0.127]
+        controller.real_move_to(robot_point)
+        robot_point = [robot_point[0], robot_point[1], 0.125]
+        controller.real_move_to(robot_point)
+        robot_point = [robot_point[0], robot_point[1], 0.135]
         controller.real_move_to(robot_point)
         wait_for_duration(1)
         # TODO: down the tool and grab the block, and add try catch
 
         print("Ready to move to finish point")
         controller.real_move_to(controller.FINISH_POINT)
-        wait_for_duration(1)
+        wait_for_duration(4)
 
         # TODO: disable the tool
+        controller.tool_use(False)
 
         print("Ready to move back to ready point")
         controller.real_move_to(controller.READY_POINT)
