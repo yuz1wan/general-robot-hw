@@ -139,10 +139,10 @@ class RobotController:
 
         # Calibrate the rgb position to robot position
         wait_for_user('Begin matrix calib.')
-        self.robot_points = np.array(self.pick_four_points(), dtype=np.float32)
+        self.pixel_points = np.array(self.pick_four_points(), dtype=np.float32)
 
         # Print the four corner points
-        print("Four corners are at", self.robot_points)
+        print("Four corners are at", self.pixel_points)
 
         wait_for_user(
             'Please move the robot to the first corner point and press enter.')
@@ -370,6 +370,34 @@ class RobotController:
         # Add a delay after the motion to stabilize the robot
         # wait_for_duration(1.0)
 
+def camera_debug():
+    controller = RobotController()
+
+    wait_for_user('Enter to photo the block.')
+    id = 1
+    img = controller.get_rgb_image(id)
+    while img is None:
+        print("Failed to get image at camera ", id)
+        id += 1
+        img = controller.get_rgb_image(id)
+    # cv2.imshow('frame', img)
+
+    pixel_points = controller.get_pixel_point(img)
+
+    id = 1
+    img = controller.get_image(id)
+    while img is None:
+        print("Failed to get image at camera ", id)
+        id += 1
+        img = controller.get_image(id)
+    pixel_points = controller.get_pixel_point(img)
+    for i in range(len(pixel_points)):
+        x = int(pixel_points[i][0])
+        y = int(pixel_points[i][1])
+        cv2.circle(img, (x, y), 5, (0, 0, 255), -1)
+    cv2.imshow('frame', img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
 def main():
     controller = RobotController()
@@ -392,19 +420,19 @@ def main():
 
     pixel_points = controller.get_pixel_point(img)
 
-    id = 1
-    img = controller.get_image(id)
-    while img is None:
-        print("Failed to get image at camera ", id)
-        id += 1
-        img = controller.get_image(id)
-    # cv2.imshow('frame', img)
-    print("pixel_points:", pixel_points)
     for i in range(len(pixel_points)):
+        id = 1
+        img = controller.get_image(id)
+        while img is None:
+            print("Failed to get image at camera ", id)
+            id += 1
+            img = controller.get_image(id)
         x = int(pixel_points[i][0])
         y = int(pixel_points[i][1])
         cv2.circle(img, (x, y), 5, (0, 0, 255), -1)
         cv2.imshow('frame', img)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
 
         robot_point = controller.pixel2robot(pixel_points[i])
         print(f"Ready to move to pixel point: {robot_point}, idx", i)
@@ -485,3 +513,4 @@ def debug_move():
 if __name__ == '__main__':
     main()
     # debug_move()
+    # camera_debug()

@@ -11,5 +11,15 @@
 For invoking ModelArts APIs in Python, refer to `APIGW-python-sdk-2.0.5/main.py`.  
 Implement the `get_pixel_point()` function in the `RobotController` class in `test_planning_real.py`.
 
+## Environment Setup
+```
+# create a conda env if you want
+
+pip install pybullet_planning
+pip install pybullet
+```
+
 ## Project Entry Point
-The `test_planning_real.py` script contains functions for both simulation and real-world testing.
+Run `export LD_LIBRARY_PATH=./GeneralRobot/SDK` before running.
+
+The `test_planning_real.py` script contains functions for both simulation and real-world testing.  
